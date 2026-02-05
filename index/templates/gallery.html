@@ -1,0 +1,89 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Gallery{% endblock %}
+{% block description %}Gallery{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px; text-align:center;">
+            <br>
+            <h2 style="font-family: juliussansregular">GALLERY</h2>
+            <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global exists to identify, honour and celebrate a cross-section of the nations most influential Non-Profit Organizations from a wide range of industries, who are committed to the growth and community service</p>
+            <p style="max-width:900px; margin:0 auto;">We believe that in putting the spotlight on these non-profit organisations it will not only celebrate them but also build a strong platform for them by giving a voice and opportunities whiles building a positive attitude in the world. </p>
+            <br>
+        </div>
+
+        <div class="container" style="text-align:center; padding:20px; ">
+            <div id="anim-thumb{{farm.slug}}{{stage.id}}" class="row" style="z-index:100000000">
+                {% for gallery in galleries %}
+                {%if gallery.image %}
+                <a href="{{gallery.image.url}}" class="col-12 col-sm-6 col-md-4 col-lg-3" style="text-decoration: none; color:none; margin-bottom:15px;">
+                    <div class="" style="min-height:50px; position:relative; border-radius: 3px; box-shadow: 0 0 6px #c2c0c0; ">
+                        <div style="background: url({{gallery.image.url}});
+                            background: linear-gradient(rgba(100,82,48,0.46), rgba(13,11,7,0.54)), url({{gallery.image.url}}) center center no-repeat;
+                            background-size:cover; width:100%; height:150px; position:relative; display:block; border-radius: 4px;">
+                            <!-- <span class="small" style="position:absolute; top:10px; right:10px; background: #ffffff3b; border: 1px solid #ffffff26; color: #fff; padding:3px 10px; border-radius:20px;">{{med.datecreated|date:'d/m/Y'}}</span>     -->
+                        </div>                                    
+                    </div>
+                    <!-- <p style="margin-bottom:10px;">{{gallery.title|truncatechars:'100'}}</p> -->
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <script type="text/javascript">
+                lightGallery(document.getElementById('anim-thumb{{farm.slug}}{{stage.id}}'), {
+                    thumbnail: true,
+                    animateThumb: true,
+                    showThumbByDefault: true
+                });
+            </script>
+                
+            <br>
+            {% if galleries|length > 50 %}
+            <nav aria-label="Page Navigation" class="float-left" style="margin-bottom:5px;">                                    
+                    <ul class="pagination pagination-sm justify-content-center" style="margin:0;">
+                        <li class="page-item"><a class="page-link" href="?page=1" aria-label="First"> First </a></li>
+                        {% if galleries.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ galleries.previous_page_number }}" aria-label=""><span aria-hidden="true">&laquo;</span></a></li>
+                        {% endif %}
+            
+                        {% if galleries.number|add:'-4' > 1 %}
+                            <li class="page-item"><a class="page-link" href="?page={{ galleries.number|add:'-5' }}">&hellip;</a></li>
+                        {% endif %}
+            
+                        {% for i in galleries.paginator.page_range %}
+                            {% if galleries.number == i %}
+                                <li class="page-item active"><a class="page-link" href="?page={{i}}" >{{i}}</a></li>
+                            {% elif i > galleries.number|add:'-5' and i < galleries.number|add:'5' %} 
+                                <li class="page-item"><a class="page-link" href="?page={{i}}" >{{i}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+            
+                        {% if galleries.paginator.num_pages > galleries.number|add:'4' %}
+                            <li class="page-item"><a class="page-link" href="?page={{ galleries.number|add:'5' }}">&hellip;</a></li>
+                        {% endif %}
+            
+                        {% if galleries.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ galleries.next_page_number }}" aria-label=""><span aria-hidden="true">&raquo;</span></a></li>
+                        {% endif %}
+                        <li class="page-item"><a class="page-link" href="?page={{ galleries.paginator.num_pages }}" aria-label="Last"> Last </a></li>
+                    </ul>
+            </nav>
+            {% endif %}
+            <br>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

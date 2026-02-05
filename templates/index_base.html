@@ -1,0 +1,298 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- Basic meta tags -->
+  <meta charset='UTF-8'>
+  <title>Humanitarian Awards Global | {% block title %}{% endblock %}</title>
+  <meta name="description" content="{% block description %}Humanitarian Awards Global{% endblock %}" />
+  <meta name="keywords" content="{% block keywords %}Humanitarian Awards Global{% endblock %}" />
+  <meta name='subject' content='Humanitarian Awards Global'>
+  <meta name='copyright' content='Humanitarian Awards Global'>
+  <meta name='language' content='ES'>
+  <meta name="robots" content="index, follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+
+  <meta http-equiv="cache-control" content="max-age=10" />
+  <meta http-equiv="cache-control" content="public" />
+  <meta http-equiv="expires" content="10" />
+  <meta http-equiv="pragma" content="public" />
+
+  <meta name="theme-color" content="rgb(22, 140, 75);">
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-54SDT2R');</script>
+  <!-- End Google Tag Manager -->
+
+
+  <!-- END OF MONSTER META TAGS-->
+
+
+  <!-- Stylesheets (CSS) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+  <!-- <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="/static/css/mainstyle.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/slider_style.css">
+ 
+
+  <!-- <link rel="stylesheet" type="text/css" href="/static/css/mainstyle.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/static/css/imagehover.css"> -->
+  <!-- <script src="/static/js/jquery-1.11.2.min.js" type="text/javascript"></script> -->
+  <!-- <script src="/static/js/parallax.min.js" type="text/javascript"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script src="/static/js/mainup.js" type="text/javascript"></script>
+  <script src="/static/js/mainscript.js" type="text/javascript"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script> -->
+  <script src="/static/js/parallax.min.js" type="text/javascript"></script>
+
+  <link type="text/css" rel="stylesheet" href="/static/lightgallery/css/lightgallery.css" />
+  <script src="/static/lightgallery/js/lightgallery.js"></script>
+
+  <!-- include summernote css/js -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+
+</head>
+
+<body id="main_body">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54SDT2R"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <div class="container-fluid">
+
+    <div id="header" class="row" >
+      <div class="col-12">
+          <div class="container" style="height:100%;">
+              <!-- <a href="{% url 'index' %}" style="float:left; width:100px; padding:10px; vertical-align: middle;"> <img id="mainlogo" src="/static/images/toplogo.png" style="width: 100%" /></a> -->
+              
+              <div id="mainnav">
+                <div class="d-block d-lg-none  float-left " style="">
+                    <a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}"><img alt="www.humanitarianawardsglobal.com" src="/static/images/award.png" style="width:120px; margin:0 20px; vertical-align: middle; display:inline-block;" /></a>
+                    <h5 class="d-none d-sm-inline-block" style="font-family: juliussansregular; color:#f4da97; display:inline-block; vertical-align: bottom; margin-bottom: 2px;">HUMANITARIAN AWARDS <br> GLOBAL</h5>
+                  </div>
+                <ul class="d-none d-lg-block">
+                  {% block menu %}
+                  <div id="left_mainnav">
+                    {% comment %} <li class="mainli"><a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a></li> {% endcomment %}
+                    <li class="mainli"><a class="{% if request.resolver_match.url_name == 'votenow' or request.resolver_match.url_name == 'vote' %}active{% endif %}" href="{% url 'votenow' %}">Vote Now</a></li>
+                    
+                    <li class="mainli"><a class="{% if request.resolver_match.url_name == 'events' or request.resolver_match.url_name == 'event' %}active{% endif %}" href="{% url 'events' %}">Events</a></li>
+                    
+                    <!-- <li class="mainli"><a class="{% if request.resolver_match.url_name == 'nominations' or request.resolver_match.url_name == 'nomination' or request.resolver_match.url_name == 'nomination_form' %}active{% endif %}" href="{% url 'nominations' %}">Nominations</a></li>  -->
+                    {% comment %} <li class="mainli"><a class="{% if request.resolver_match.url_name == 'nominations' or request.resolver_match.url_name == 'nomination' or request.resolver_match.url_name == 'nomination_form' or request.resolver_match.url_name == 'nominate' or request.resolver_match.url_name == 'nomination_list' or request.resolver_match.url_name == 'nomination_tips' or request.resolver_match.url_name == 'nomination_rules' or request.resolver_match.url_name == 'nomination_guidelines' or request.resolver_match.url_name == 'nomination_entry' or request.resolver_match.url_name == 'awards_process' %}active{% endif %}" href="#">Nominations <i class="fa fa-chevron-down"></i></a>
+                      <ul>
+                        <li class="main2li"><a class="{% if request.resolver_match.url_name == 'nominate' %}active{% endif %}" href="{% url 'nominate' %}">Nominate</a></li>
+                        <li class="main2li"><a class="{% if request.resolver_match.url_name == 'nomination_tips' %}active{% endif %}" href="{% url 'nomination_tips' %}">Nominations Tips</a></li>
+                        <li class="main2li"><a class="{% if request.resolver_match.url_name == 'nomination_rules' %}active{% endif %}" href="{% url 'nomination_rules' %}">Nominations Rules</a></li>
+                        <li class="main2li"><a class="{% if request.resolver_match.url_name == 'nomination_guidelines' %}active{% endif %}" href="{% url 'nomination_guidelines' %}">Nominations Guidelines</a></li>
+                        <li class="main2li"><a class="{% if request.resolver_match.url_name == 'awards_process' %}active{% endif %}" href="{% url 'awards_process' %}">Awards Process</a></li>
+                      </ul>
+                      </li>                     {% endcomment %}
+                    <!-- <li class="mainli"><a class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li> -->
+                    <li class="mainli"><a class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About <i class="fa fa-chevron-down"></i></a>
+                    <ul>
+                      <li class="main2li"><a class="{% if request.resolver_match.url_name == 'theboard' %}active{% endif %}" href="{% url 'theboard' %}">The Board</a></li>
+                      <li class="main2li"><a class="{% if request.resolver_match.url_name == 'theteam' %}active{% endif %}" href="{% url 'theteam' %}">The Team</a></li>
+                      <li class="main2li"><a class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
+                      <li class="main2li"><a class="{% if request.resolver_match.url_name == 'sponsorships' %}active{% endif %}" href="{% url 'sponsorships' %}">Sponsorships</a></li>
+                    </ul>
+                    </li> 
+                  </div>
+                  <a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}"><img alt="www.humanitarianawardsglobal.com" src="/static/images/award.png" style="width:120px; vertical-align: bottom; margin-bottom: -10px;" /></a>
+                  <div id="right_mainnav">
+                    <!-- <li class="mainli"><a class="{% if request.resolver_match.url_name == 'theboard' or request.resolver_match.url_name == 'event' %}active{% endif %}" href="{% url 'theboard' %}">The Board</a></li>-->
+                    <li class="mainli"><a class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li> 
+                    <li class="mainli"><a class="{% if request.resolver_match.url_name == 'awards' %}active{% endif %}" href="{% url 'awards' %}">Awards</a></li>
+                    <!-- <li class="mainli"><a class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li> -->
+                    <li class="mainli"><a class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Contacts</a></li>
+                  </div>          
+                  {% endblock %}
+                </ul>
+                <div class="d-block d-lg-none  float-right menudiv" style="padding:45px 20px 20px;">
+                  <i id="menubutton" class="fa fa-bars" onclick="toggleMobileMenu()"></i>
+                </div>
+              </div>
+            </div>
+      
+            {% block mobilnav %}
+            <div id="mobilenav" class="" >
+              <ul>
+                  <li><a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'votenow' or request.resolver_match.url_name == 'vote' %}active{% endif %}" href="{% url 'votenow' %}">Vote Now</a></li>
+                  {% comment %} <li><a class="{% if request.resolver_match.url_name == 'nominations' or request.resolver_match.url_name == 'nomination' or request.resolver_match.url_name == 'nomination_form' %}active{% endif %}" href="{% url 'nominations' %}">Nominations</a></li> {% endcomment %}
+                  
+                  <li><a class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'theboard' %}active{% endif %}" href="{% url 'theboard' %}"><i>About :: The Board</i></a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'theteam' %}active{% endif %}" href="{% url 'theteam' %}"><i>About :: The Team</i></a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}"><i>About :: Gallery</i></a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'sponsorships' %}active{% endif %}" href="{% url 'sponsorships' %}"><i>About :: Sponsorships</i></a></li>
+                  {% comment %} <li><a class="{% if request.resolver_match.url_name == 'nominations' or request.resolver_match.url_name == 'nomination' or request.resolver_match.url_name == 'nomination_form' or request.resolver_match.url_name == 'nominate' or request.resolver_match.url_name == 'nomination_list' or request.resolver_match.url_name == 'nomination_tips' or request.resolver_match.url_name == 'nomination_rules' or request.resolver_match.url_name == 'nomination_guidelines' or request.resolver_match.url_name == 'nomination_entry' or request.resolver_match.url_name == 'awards_process' %}active{% endif %}" href="#">Nominations <i class="fa fa-chevron-down"></i></a> {% endcomment %}
+                  
+                  <li><a class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}"><i>Blog</i></a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'events' or request.resolver_match.url_name == 'event' %}active{% endif %}" href="{% url 'events' %}">Events</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'awards' %}active{% endif %}" href="{% url 'awards' %}">Awards</a></li>
+                  {% comment %} <li><a class="{% if request.resolver_match.url_name == 'nominate' %}active{% endif %}" href="{% url 'nominate' %}">Nominations :: Nominate</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'nomination_tips' %}active{% endif %}" href="{% url 'nomination_tips' %}">Nominations :: Nominations Tips</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'nomination_rules' %}active{% endif %}" href="{% url 'nomination_rules' %}">Nominations :: Nominations Rules</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'nomination_guidelines' %}active{% endif %}" href="{% url 'nomination_guidelines' %}">Nominations :: Nominations Guidelines</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'awards_process' %}active{% endif %}" href="{% url 'awards_process' %}">Nominations :: Awards Process</a></li> {% endcomment %}
+                    
+                  <li><a class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Contacts</a></li>        
+              </ul>
+            </div>
+            {% endblock %}
+      </div>      
+    </div>
+
+    {% block content %}
+
+
+
+
+    {% endblock %}
+    
+    <a style="float:right; display:none;" href="#" onclick="scrolltothetopsmoothly()" class="scrollToTop" title="Scroll Back to Top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container py-4 px-3" style="background:linear-gradient(#181818, #0c0c0c); color:#5a5a5a; border-radius:10px; border:1px solid #debe4c; " >
+        
+          <h4 class="mt-4 mb-3" style="font-family: robotolight; color:#fff; text-align:center;">Subscribe to our Newsletter</h4>
+
+          <form id="newsletterform" method="POST" action="{% url 'emailsubscription' %}">
+            {% csrf_token %}
+            <div class="row justify-content-center align-items-center" style="max-width: 600px; margin: 0 auto">
+              <div class="col-12 col-md-5 mb-3">
+              <input type="text" value="" name="subscriberfullname" id="subscriberfullname"
+                placeholder="Full name" class="form-control input-group-prepend" required
+                />
+              </div>
+              <div class="col-12 col-md-5 mb-3">
+              <input type="email" value="" name="subscriberemail" id="subscriberemail"
+                placeholder="Enter email address" class="form-control" required
+                />
+              </div>
+              <div class="col-12 col-md-2 mb-3">
+                <button type="submit" class="btn btn-dark btn-md input-group-btn" style="border-radius:0 5px 5px 0;">Subscribe</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="row" >
+      <div class="col-12">
+        <div class="container" style="padding:20px; background:linear-gradient(#181818, #0c0c0c); color:#5a5a5a; border-radius:10px; border:1px solid #debe4c; margin-bottom:10px; ">
+          <div class="row">
+            <div class="col-12 col-md-4" style="margin-bottom:10px;">
+              <h5>Contact: </h5>            
+              <hr>
+              <span style="color:#5a5a5a; line-height: 1.4;">
+                <p><b>Phone: </b><a href="tel:+233249174715">+233 24 917 4715</a> | <a href="tel:+233244656402">+233 24 465 6402</a> </p>
+                <br><p><b>Email: </b><a href="mailto:info@humanitarianawardsglobal.com">info@humanitarianawardsglobal.com</a></p>
+                <br><p><b>Address: </b> P.O.Box WY 1914 Kwabenya Accra </p>
+                
+              </span>
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom:10px; text-align: justify;">
+              <h5>About Us</h5>
+              <hr>
+              <p>Humanitarian Awards Global exists to identify, honour and celebrate a cross-section of the nations most influential Non-Profit Organizations from a wide range of industries, who are committed to the growth and community service. We believe that in putting the spotlight on these non-profit organisations it will not only celebrate them but also build a strong platform for them by giving a voice and opportunities whiles building a positive attitude in the world.</p>
+              
+            </div>
+            <div class="col-12 col-md-4" style="margin-bottom:10px; ">
+                <h5>Sitemap</h5>
+                <hr>
+                <span style="color:#ccc">
+                <ul style="list-style-type: none; margin:0; padding:0;">
+                  <li><a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+                  <!-- <li><a class="{% if request.resolver_match.url_name == 'votenow' %}active{% endif %}" href="{% url 'votenow' %}">Vote Now</a></li> -->
+                  <li><a class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'events' or request.resolver_match.url_name == 'event' %}active{% endif %}" href="{% url 'events' %}">Events</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'nominations' or request.resolver_match.url_name == 'nomination' or request.resolver_match.url_name == 'nomination_form' %}active{% endif %}" href="{% url 'nominations' %}">Nominations</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'awards' %}active{% endif %}" href="{% url 'awards' %}">Awards</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a></li>
+                  <li><a class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Contacts</a></li>
+                </ul>             
+                </span>
+              </div>
+
+          </div>
+        </div>
+        <br>
+        <div class="container" style="padding:10px; background:linear-gradient(#181818, #0c0c0c); color:#5a5a5a; border-radius:10px; border:1px solid #debe4c; " >
+          <div class="d-flex flex-wrap">
+            <div class="flex-grow-1">
+                <p class="m-0">Powered by <a href="http://www.osanim.com" target="_blank" style="color:#5a5a5a; text-decoration:none;">Osanim
+                  Systems</a></p>
+            </div>
+            <div class="">
+                <p class="m-0">Copyright © {% now "Y" %} HAG. All Rights Reserved.</p>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="smallfooter" class="row">
+      <div class="container">
+        <p class="float-left">Powered by <a href="http://www.osanim.com" target="_blank" style="color:#eee; text-decoration:none;">Osanim
+            Systems</a></p>
+        <p class="float-right">Copyright © {% now "Y" %} HAG. All Rights Reserved.</p>
+      </div>
+    </div> -->
+
+
+
+  </div>
+  <!-- End of Container Fluid -->
+
+</body>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script>
+  const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+  observer.observe();
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% block scripts %}
+
+
+{% endblock %}
+
+
+</html>

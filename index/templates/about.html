@@ -1,0 +1,90 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}About Us{% endblock %}
+{% block description %}About Us of HAG{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px; text-align:center;">
+            <br>
+            <h2 style="font-family: juliussansregular">PROFILE OF THE HUMANITARIAN AWARDS GLOBAL </h2>
+            <br>
+            {% comment %} <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global is to recognize and Award extraordinary individuals and groups who are positively impacting the lives of people, nature and society in Ghana.</p> {% endcomment %}
+            <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global serves to recognize, applaud, and showcase a diverse array of the world&#39;s most
+                impactful non-profit organizations spanning various sectors, all dedicated to community service and societal
+                advancement. Our mission is to shine a light on these non-profits, not only to honour their efforts but also to
+                amplify their voices and enhance their opportunities. In doing so, we aim to foster an environment of positivity
+                and proactive engagement worldwide.</p>
+            {% comment %} <br>
+            <p style="max-width:900px; margin:0 auto;">The Awards is to identify, honour and celebrate a cross-section of the nation’s most influential and accomplished businesses doing humanitarian works and leaders from a wide range of industries who are committed to improving lives and preserving the environment through their work and businesses. We believe that in putting the spotlight on these humanitarian efforts, it will not only celebrate them but help build a strong platform for them by giving voice and opportunities to the next generation of industry pacesetters while building a positive attitude. We have seen outstanding individuals and companies of trailblazers striving hard with dedication and perseverance by overcoming challenges and economic instability to impact lives and sustain the environment. These are the people or business we want to award. </p> {% endcomment %}
+            <br>
+            <h3>Theme: Celebrating change makers</h3><br>
+        </div>
+        <div class="container" style="padding:20px; ">
+            <h3 style="font-family: juliussansregular">Our Awarding board</h3>
+            <p>is seeking outstanding entrepreneurs, executives, managers and professionals in the public and private and non-profit sectors and will recognize attributes such as achievements in corporate social responsibility, community service and development as well as environmental protection.</p>
+            <br>
+            <h3 style="font-family: juliussansregular">Our Categories</h3>
+            <p>cover a wide range of all the various sectors you can think of in the humanitarian, philanthropist and corporate social responsibilities, ranging from banking and finance, agriculture, theatre and arts, journalism, fashion, law, sports, event ma engagement, health, technology and innovation amongst others. </p>
+            <br>
+            <h3 style="font-family: juliussansregular">Purpose</h3>
+            <ul>
+                <li>To recognize and celebrate humanitarians who demonstrate or impact individuals or society through their exceptional leadership.</li>
+                <li>To honor the outstanding individuals involved in the various fields of charity and humanitarian work</li>
+                <li>To celebrate the exceptional contributions of organizations to social development.</li>
+                <li>To provide formal recognition and showcase those who are providing valuable contribution to humanitarian work in Ghana.</li>
+                <li>To promote the development of best practices and high standards.</li>
+                <li>The awards lie in the opportunity for charitable organizations to tell their stories and spread awareness for their courses.</li>
+                <li>To create a common interactive medium where prevailing issues are identified and challenged.</li>
+            </ul>
+            <br>
+            <h3 style="font-family: juliussansregular">Eligibility Criteria</h3>
+            <ul>
+                <li>To be eligible candidates must be a Ghanaian, living and doing business in Ghana </li>
+                <li>Nominees with repeat submissions will have no advantage over those with one nomination.</li>
+                <li>The selection process is not determined by the number of nominations an individual receives, Nominations can be anonymous and letters of recommendation are not required. </li>
+                <li>Nominee must still be over the age of 18, by event date.</li>                
+            </ul>
+            <br>
+            <h3 style="font-family: juliussansregular">Awarding Board</h3>
+            <p>Our Awards are carefully managed to guard the credibility and ensure its sustainability.</p>
+            <br>
+            <h3 style="font-family: juliussansregular">Nominations</h3>
+            <p>Participating in the Humanitarian Awards Global is one of the fastest routes to wide recognition of your achievements Finalists and winners will benefit from extensive media coverage; wide exposure in the investment community and enhanced peer recognition</p>
+            <br>
+            <h3 style="font-family: juliussansregular">Why Attend</h3>
+            <h4>Humanitarian Awards Global is a Platform to: </h4>
+            <p>Recognize and Showcase individual’s activities and achievement in the past year. Gain individual and company recognition in the world of humanitarian business. Reward individual efforts in a high-profile, cost effective setting - Interact with Industry players on issues of mutual Interest. Bridge gap between entrepreneurs, executives, managers and professionals in the public, private and non-profit sectors companies. Advertise company product and services. Conduct business in a relaxed and fun networking environment</p>
+            <br>
+            <h4>The Heroes Summit: </h4>
+            <p>The Humanitarian Awards Global Summit is an educational and networking event for shortlisted nominees. It is expected to gather over 200 Humanitarians, Philanthropists, Entrepreneurs and Chief Executives. The Summit offers participants a one-day retreat in order to gain new perspective on their businesses. It also serves as a networking event for the industry's present and future leaders. Attendees will have a full day session with renowned strategic business discussions. The conference aims at putting the spotlight on these humanitarian achievers by building a strong platform and give them a wise and opportunities to the next generation of industry in building the positive attitude to strive for excellence</p>
+            <br>
+            <h4>Focus:</h4>
+            <p>This one-day summit brings impactful humanitarian and entrepreneurial leaders in Ghana, these leaders come from all sectors and focused on expanding the businesses in recent years. In addition, these leaders are entrenched in initiatives aimed at improving or changing a situation, or by being great role models that inspire others. If Ghana must grow and burst into economic independence, then the generation must be ground in business Sustain and SDGs</p>
+            <br>
+            <h4>Core areas of the Summit :</h4>
+            <ul>
+                <li>Strategic and Visionary Thinking </li>
+                <li>Collaboration and Partnerships </li>
+                <li>Building & Maintaining Relationships </li>
+                <li>Clear Communication Skills </li>
+                <li>Change Champions </li>
+                <li>Innovation </li>                
+            </ul>
+            <br>
+           
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

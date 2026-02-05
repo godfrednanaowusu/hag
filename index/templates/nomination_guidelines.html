@@ -1,0 +1,58 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Nomination Guidelines{% endblock %}
+{% block description %}Nomination Guidelines{% endblock %}
+{% block keywords %} {% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px;">
+            <br>
+            <h2 class="text-center" style="font-family: juliussansregular">Nomination Guidelines</h2>
+            <br><br>
+            <h4>Eligibility:</h4>            
+            <p>To be eligible for nomination, an individual or company must have worked or volunteered for a charity within the borders of Ghana, Africa, and the world at some time in the year from January to December.</p>
+            <br>
+            <h4>Nominators:</h4>
+            <p>Nominations are invited from voluntary and community sector organizations and members of the public.</p>
+            <br>
+            <h4>Selection Process:</h4>
+            <ol>
+                <li>One winner will be selected from each award category, but all nominees will be recognized.</li>
+                <li>Nomination details, including nomination information, may be used in publicity, including photographs, media, and/or articles for promotional purposes.</li>
+                <li>The committee reserves the right not to award prizes in any category if they consider nominations to be unsuitable.</li>
+                <li>If a nomination is for a volunteer who is under 18 years old, their parents or guardian must give their permission.</li>
+            </ol>
+            <br>
+            <h4>Submission Requirements:</h4>
+            <p>For each company entry, a write-up of not more than 1,000 words, excluding attachments, profiles of the company, and brochures, media, is required.</p>
+            <br>
+            <h4>Awards:</h4>
+            <p>Winners will receive a plaque and certificate. There is no guaranteed cash or alternative award available in whole or in part. Any financial awards are subject to board decisions and sponsorship for the year.</p>
+            <br>
+            {% comment %} <p class="text-start" style="max-width:900px;">
+            <ol>
+                <li>Nominees or company must have worked or volunteered for a charity within the borders of Ghana, Africa and the world at some time in the year from January to December. </li>
+                <li>Nominations are invited from voluntary and community sector organizations and members of the public. </li>
+                <li>One winner will be selected from each award category but all nominees will be recognized.</li>
+                <li>Nominations details including nominations information may be used in publicity including photograph, media, and/or articles for promotional purposes.</li>
+                <li>The committee reserves the right not to award prizes in any category if they consider nominations to be unsuitable.</li>
+                <li>If a nomination is for a volunteer who is under 18 years old their parents or guardian must give their permission</li>
+                <li>For each company entry should be accompanied by a write up of not more than 1000 words excluding attachment, profiles of the company and brochures, media</li>
+                <li>Winner will receive a plaque and certificate. There is no guaranteed cash or alternative award available in whole or in part. Any financial awards are subject to board decisions and sponsorship for the year. </li>
+            </ol>
+            </p> {% endcomment %}
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

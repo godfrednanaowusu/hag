@@ -1,0 +1,129 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Login{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %} {% endblock %}
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" style="background: #f5f9fd;">
+<div class="container" style="max-width: 350px; padding:10px 0; margin-bottom:40px;">
+    <div class="row">
+        <div id="loginbox" style="margin-top:20px;" class="mainbox col-md-12  col-sm-12 ">                    
+            <div class="carddiv" style="background:#fff; text-align:center;">
+                    
+                    <div style=" padding:0; border-radius:0px;" class="card-body">
+                    
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>                            
+              
+                        <form id="form" class="simple-inline" role="form" method="post" action="{% url 'adminlogin' %}">
+                            {% csrf_token %}
+                            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" value="" />
+                            <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                    <!-- <div class="row"> -->
+                                        <div class="col-12">
+                                            {% if message.tags == 'success' %}
+                                                <div class="alert alert-success" style="margin-bottom:5px;">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                    {{ message }}
+                                                </div>
+                                            {% elif message.tags == 'info' %}
+                                                <div class="alert alert-info" style="margin-bottom:5px;">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                    {{ message }}
+                                                </div>
+                                            {% elif message.tags == 'error' %}
+                                                <div class="alert alert-danger" style="margin-bottom:5px;">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                    {{ message }}
+                                                </div>
+                                            {% elif message.tags == 'warning' %}
+                                                <div class="alert alert-warning" style="margin-bottom:5px;">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                    {{ message }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        
+                                    <!-- </div> -->
+                                    {% endfor %}
+                                    {% endif %}
+                                    
+                                {% if form.username.errors %}
+                                <div class="form-group col-12">
+                                <div style="padding: 3px; " id="login-alert" class="alert alert-danger col-sm-12">
+                                <p>{{form.username.errors}}</p>
+                                </div>
+                                </div>
+                                {% endif %}
+
+                                <div class="form-group col-12">
+                                    <div  class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class="fa fa-user"></i></span>
+                                        </div>
+                                        <input id="id_username" type="text" class="form-control" name="username" value="{{ form.username.value|default_if_none:''}}" placeholder="Username" required >                                        
+                                    </div>
+                                </div>
+                                
+                                 
+                                  {% if form.password.errors %}
+                                  <div class="form-group col-12">
+                                    <div style="padding: 3px; " id="login-alert" class="alert alert-danger col-sm-12">
+                                    <p>{{form.password.errors}}</p>
+                                    </div>
+                                    </div>
+                                    {% endif %}
+    
+                                <div class="form-group col-sm-12" >
+                                <div  class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class="fa fa-lock"></i></span>
+                                    </div>
+                                    <input id="id_password" type="password" value="{{ form.password.value|default_if_none:''}}" class="form-control" name="password" placeholder="Password" autocomplete="off" required >
+                                </div>
+                                </div>
+                                      
+    
+                                <div class="form-group col-sm-12">
+                                    <div  class="form-group">
+                                        <!-- Button -->
+                                        <button type="submit" id="btn-login" class="btn btn-info btn-block">Login  </button>
+                                          
+                                    </div>
+                                </div>
+        
+                            </form> 
+
+   
+                        
+                        </div>                     
+
+            </div> 
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+ {% endblock %}

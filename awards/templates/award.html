@@ -1,0 +1,84 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}Awards{% endblock %}
+{% block description %}Awards{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json'%}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="container" style="padding:20px; text-align:center;">
+        <br>
+        <h2 style="font-family: juliussansregular">Award</h2>
+        <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global exists to identify, honour and celebrate a cross-section of the nations most influential Non-Profit Organizations from a wide range of industries, who are committed to the growth and community service</p>
+        <p style="max-width:900px; margin:0 auto;">We believe that in putting the spotlight on these non-profit organisations it will not only celebrate them but also build a strong platform for them by giving a voice and opportunities whiles building a positive attitude in the world. </p>
+        <br>
+        <br>
+        <h4>List of Awards</h4>
+        <div class="table-responsive">
+            <table class="table table-sm table-dark table-striped table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Category</th>
+                    <th>Sub Category</th>
+                    <th>Sub Category</th>
+                    <th>Enter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td><a class="btn btn-sm btn-warning" href="#" style="padding:0 10px;">Enter <i class="fa fa-chevron-right"></i></a></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td><a class="btn btn-sm btn-warning" href="#">Enter <i class="fa fa-chevron-right"></i></a></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td><a class="btn btn-sm btn-warning" href="#">Enter <i class="fa fa-chevron-right"></i></a></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td><a class="btn btn-sm btn-warning" href="#">Enter <i class="fa fa-chevron-right"></i></a></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td><a class="btn btn-sm btn-warning" href="#">Enter <i class="fa fa-chevron-right"></i></a></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td>Aviation</td>
+                    <td><a class="btn btn-sm btn-warning" href="#">Enter <i class="fa fa-chevron-right"></i></a></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

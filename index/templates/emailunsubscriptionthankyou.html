@@ -1,0 +1,21 @@
+{% extends "index_base.html" %}
+{% load static%}
+{% block title %} Email Subscription {% endblock %}
+{% block description %}  {% endblock %}
+{% block keywords %}  {% endblock %}
+
+{% block content %}
+
+<div class="row" style="min-height:50vh; padding:150px 10px; text-align:center; background:#fff; font-family: robotolight;">
+<div class="container" style="">
+<img alt="dabi tv image" class="lozad" data-src="{% static 'images/email.png' %}" style="border-radius: 100%; padding: 20px;">
+{% if subsribed %}
+    <h2>You have been unsubscribed from our Email Newsletters</h2>
+    <p>We hope to see you again</p>
+{% else %}
+    <h2>You are not subscribed to our Email Newsletters</h2>
+    <p>We hope to see you soon</p>
+{% endif %}
+</div>
+</div>
+{% endblock %}

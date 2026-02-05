@@ -1,0 +1,57 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Awards Process{% endblock %}
+{% block description %}Awards Process{% endblock %}
+{% block keywords %} {% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px;">
+            <br>
+            <h2 class="text-center" style="font-family: juliussansregular">Awards Process: How We Select the Best</h2>
+            {% comment %} <p class="text-start" style="max-width: 900px;">The following levels of supervision, authentication and validation will be implemented to guard the credibility of the awards.</p> {% endcomment %}
+            <br><br>
+            <h4>Nominations</h4>
+            <p>Nominations can be made by anyone, but they must be supported by evidence. The research committee reviews all nominations and selects a shortlist of candidates.</p>
+            <br>
+            <h4>Data Request</h4>
+            <p>The nominated companies and persons are requested to provide data that supports their nomination. This data may include information about their impact, their innovation, or their leadership.</p>
+            <br>
+            <h4>Data Vetting</h4>
+            <p>A technically competent committee vets the data submitted by the nominated companies and persons. The committee ensures that the data is accurate and complete.</p>
+            <br>
+            <h4>Report Writing</h4>
+            <p>The research committee writes a report that summarizes the findings of the data vetting process. The report includes a recommendation for the winner of the award.</p>
+            <br>
+            <h4>Awarding Board</h4>
+            <p>The awarding board is responsible for selecting the winners of the awards. The board consists of a panel of experts who are familiar with the field of the award.</p>
+            <br>
+            <h4>Public Voting</h4>
+            <p>In some cases, the public is allowed to vote for the winners of the awards. This is usually done for awards that are open to the general public.</p>
+            <br>
+            <h4>Winner Announcement</h4>
+            <p>The winners of the awards are announced at an awards ceremony. The ceremony is usually held in a public place and is open to the general public.</p>
+            <br>
+
+            {% comment %} <p class="text-start" style="max-width: 900px;">
+            <ol>                
+                <li>Nominations by a competent and independent research committee. Request for data from nominated companies and persons. Vetting of data and report writing by a technically competent committee.</li>
+                <li>Awarding Board / Public voting (based on Award category). All individuals shortlisted will be notified directly. Shortlisted candidates or finalists will be published in the news and website.</li>
+                <li>Winning of competitive categories is determined by 75% impacts and 25% public voting. </li>
+                <li>Winners are finally announced at the Award ceremony.</li>
+            </ol>
+            </p> {% endcomment %}
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

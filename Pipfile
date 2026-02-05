@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Pillow = "*"
+requests = "*"
+celery = "*"
+redis = "*"
+gunicorn = "*"
+django-storages = "*"
+boto3 = "*"
+django-environ = "*"    
+django-ses = "*"
+openpyxl = "==2.4.0"
+django-crispy-forms = "*"
+crispy-bootstrap4 = "*"
+Django = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
+
+[dev-packages]
+pylint = "*"
+
+[requires]
+python_version = "3.12"
+

@@ -1,0 +1,107 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}The Board{% endblock %}
+{% block description %}The Board of HAG{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px; text-align:center;">
+            <br>
+            {% if hagteammember %}
+            <div class="row" style="text-align: left;">    
+                <div class="col-12 form-group">
+                    <div class="float-left">
+                        <a class="backbutton" href="{% url 'theboard' %}" style="text-decoration: none;" ><i class="defaultbtnicon fa fa-chevron-left d-inline-block"></i> <i class="loadingbtnicon fa fa-spinner fa-spin d-none"></i> Back to The Board</a>
+                    </div>
+                </div>         
+                    <div class="form-group col-12 col-sm-12 col-md-5 col-lg-4">
+                        <div class="card form-group" style="width:100%; margin:0 auto; display:block;">
+                            <div style="width:100%; height:340px; background:url({% if hagteammember.photograph %}{{hagteammember.photograph.url}}{% else %}/static/images/user.png{% endif %}) no-repeat center; background-size:cover; background-position:top center; border-radius:4px 4px 0 0;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 col-sm-12 col-md-7 col-lg-8">
+                        <h3 style="font-family: juliussansregular;">{{hagteammember.fullname|default:''}}</h3>
+                        <p style="margin-bottom:5px;"><b>Position: </b>{{hagteammember.position|default:''}}</p>
+                        <p style="margin-bottom:5px;"><b>Bio: </b>{{hagteammember.bio|safe|default:''}} </p>
+                        <br>
+                        <h5>Follow via:</h5>
+                        <p>
+                            {% if hagteammember.linkedin %}
+                            <a class='btn btn-info btn-sm' target="_blank" href='{{hagteammember.linkedin}}' style="border-radius:30px; padding-left:15px; padding-right:15px; margin:5px 5px 10px 0px;"><i class="fa fa-linkedin"></i> Linkedin</a> 
+                            {% endif %}
+                            {% if hagteammember.facebook %}
+                            <a class='btn btn-primary btn-sm' target="_blank" href='{{hagteammember.facebook}}' style="border-radius:30px; padding-left:15px; padding-right:15px; margin:5px 5px 10px 0px;"><i class="fa fa-facebook"></i> Facebook</a> 
+                            {% endif %}
+                            {% if hagteammember.twitter %}
+                            <a class='btn btn-primary btn-sm' target="_blank" href='{{hagteammember.twitter}}' style="border-radius:30px; padding-left:15px; padding-right:15px; margin:5px 5px 10px 0px;"><i class="fa fa-twitter"></i> Twitter</a> 
+                            {% endif %}
+                            {% if hagteammember.instagram %}
+                            <a class='btn btn-danger btn-sm' target="_blank" href='{{hagteammember.instagram}}' style="border-radius:30px; padding-left:15px; padding-right:15px; margin:5px 5px 10px 0px;"><i class="fa fa-instagram"></i> Instagram</a> 
+                            {% endif %}
+                            
+                            </p>
+                        <!-- <p style="margin-bottom:5px;"><b>Why Nominee deserves to be awarded: </b>{{nominee.nominee_deserve_info|default:''}} </p>
+                        <p style="margin-bottom:5px;"><b>Nominee's effort to the society: </b>{{nominee.nominee_effort_info|default:''}} </p>
+                        <p style="margin-bottom:5px;"><b>What makes Nominee Exceptional: </b>{{nominee.nominee_exception|default:''}} </p> -->
+                    
+                    </div>                
+                </div>
+                
+        {% else %}
+
+            <h2 style="font-family: juliussansregular">THE BOARD</h2>
+            <p style="max-width:900px; margin:0 auto;">Our Board is seeking outstanding entrepreneurs, executives, managers and professionals in the public and private and non-profit sectors and will recognize attributes such as achievements in corporate social responsibility, community service and development as well as environmental protection.</p>
+            <br>
+            {% if hagteam %}
+            
+            <div class="row">
+                
+                {% for team in hagteam %}
+                <div class="col-12 col-sm-6 col-md-4" style="margin-bottom: 10px;">
+                    <div class="carddiv carddiv_anim" style="text-align:center; display:block; color: #1f2a57;">
+                        <div class="card_image_div">
+                            {% if team.photograph %}
+                                <img alt="afcfta image" class="lozad" data-src="{{ team.photograph.url }}" style="width:100%; border-radius:8px;">
+                            {% else %}
+                                <img alt="afcfta image" class="lozad" data-src="{% static 'images/user.png' %}" style="width:100%; border-radius:8px;">
+                            {% endif %}
+                        </div> 
+                        <h5 style="font-family: robotoblack; margin:0; ">{{team.fullname}}</h5>                        
+                        <p class="small" style="text-align: center;">{{team.position}}</p>    
+                        <p class="">
+                            {% if team.facebook %}
+                            <a href="{{team.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a> 
+                            {% endif %}
+                            {% if team.twitter %}
+                            <a href="{{team.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a> 
+                            {% endif %}
+                            {% if team.instagram %}
+                            <a href="{{team.instagram}}" target="_blank"><i class="fa fa-instagram"></i></a> 
+                            {% endif %}
+                            {% if team.linkedin %}
+                            <a href="{{team.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a> 
+                            {% endif %}
+                        </p> 
+                        <p><a class="btn btn-secondary btn-sm" href="{% url 'theboard' %}?id={{team.id}}" style="padding:5px 45px; margin-top:5px;">Learn More</a></p>               
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+            
+        </div>    
+    </div>
+</div>
+{% endblock %}

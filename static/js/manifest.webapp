@@ -1,0 +1,9 @@
+{
+  "name": "Church Affairs",
+  "description": "Church Management System",
+  "launch_path": "/",
+  "icons": { "512": "static/images/logo.png"  },
+  "developer": {"name": "Church Affairs", "url": "http://churchaffairs.com"  },
+  "default_locale": "en",
+  "chrome": { "navigation": true }
+}

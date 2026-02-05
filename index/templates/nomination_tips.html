@@ -1,0 +1,35 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Nomination Tips{% endblock %}
+{% block description %}Nomination Tips{% endblock %}
+{% block keywords %} {% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px;">
+            <br>
+            <h2 class="text-center" style="font-family: juliussansregular">Nomination Tips</h2>
+            <p class="text-start" style="max-width:900px;">
+            <ol>
+                <li>Give a brief description of the nominee professional achievements.  Suggestions: Include the nominee’s recent significant business accomplishments or past distinctions and awards.</li>
+                <li>Why does your nominee deserve recognition:</li>
+                <li>Tell us about the nominee’s leadership abilities and experience.  Suggestions: Demonstration of nominee’s leadership and innovation, demonstration of company growth due to nominee leadership. </li>
+                <li>Tell us about the nominee’s community involvement.  Suggestions: Include impacts, publications and reports. </li>
+                <li>In summary, tell us what makes this nominee unique and outstanding and is a worthy recipient of Humanitarian Awards Global.</li>
+                <li>Please share any website or online articles or reference about your nominee’s activities:</li>
+            </ol>
+            </p>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

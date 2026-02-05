@@ -1,0 +1,73 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="{% block txt_dir %}ltr{% endblock %}" lang="{% block language %}en{% endblock %}">
+
+<head>
+
+  <!-- MONSTER META TAGS-->
+
+  <!-- Basic meta tags -->
+  <meta charset='UTF-8'>
+  <title>HAG · {% block title %}{% endblock %}</title>
+  <meta name="description" content="{% block description %}HAG{% endblock %}" />
+  <meta name="keywords" content="{% block keywords %}HAG{% endblock %}" />
+  <meta name='subject' content='HAG'>
+  <meta name='copyright' content='HAG'>
+  <meta name='language' content='ES'>
+  <meta name="robots" content="index, follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+
+  <meta http-equiv="cache-control" content="max-age=10" />
+  <meta http-equiv="cache-control" content="public" />
+  <meta http-equiv="expires" content="10" />
+  <meta http-equiv="pragma" content="public" />
+
+  <meta name="theme-color" content="rgb(22, 140, 75);">
+
+
+
+  <!-- END OF MONSTER META TAGS-->
+
+
+  <!-- Stylesheets (CSS) -->
+  <!-- <link rel="stylesheet" type="text/css" href="/static/css/mainstyle.css"> -->
+  <style type="text/css">
+  @font-face {
+    font-family:quicksandbold; 
+    src: url(/static/fonts/Quicksand-Bold.otf); 
+}
+
+    html {height: 100%; padding:0; margin:0}
+    body {     
+        height: 100%;   
+        padding:0; margin:0;
+        text-align: center;
+        background: rgb(22, 140, 75);
+        background: linear-gradient(135deg, rgba(153, 255, 87, 0.89), rgba(22, 140, 75, 0.69)), url(/static/slider/images/charity.jpg), url(/static/slider/images/charity.jpg);
+        background-size: cover; 
+        background-position: center top;
+        background-repeat: no-repeat;
+        color: #fff;
+        font-family: quicksandbold;
+    }
+    </style>
+
+</head>
+
+<body>    
+  <div class="container-fluid">
+    {% block content %}
+
+
+
+
+    {% endblock %}
+
+  </div>
+  <!-- End of Container Fluid --> 
+
+</body>
+</html>

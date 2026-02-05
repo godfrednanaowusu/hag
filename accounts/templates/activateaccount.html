@@ -1,0 +1,104 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Activation{% endblock %}
+{% block description %}Activation your Accout.{% endblock %}
+{% block keywords %} {% endblock %}
+
+{% block content %}
+<div class="pageheader row">
+    <div class="container">
+        <h2 style="padding:10px;"> ACTIVATE ACCOUNT </h2>
+    </div>
+</div>
+
+<div class="row" style="background: #f5f9fd;">
+<div class="container" style="max-width: 320px; padding:10px 0; margin-bottom:40px;">
+    <div class="row">
+        <div id="loginbox" style="margin-top:20px;" class="mainbox col-md-12  col-sm-12 ">                    
+            <div class="card " style="background:#fff; border: 1px solid #ccc; border-radius:0px; box-shadow: 0 0 10px #e7e7e7; text-align:center;">
+                    
+                    <div style="padding:0px; border-radius:0px;" class="card-body">
+                    
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+              
+                        <form id="activateform" class="simple-inline" role="form" method="post" action="{% url 'activateaccount' phonenumber %}">
+                            {% csrf_token %}
+                                <br>                                       
+                                <div class="form-group col-12">
+                                    <h5>Kindly Enter the CODE that was sent to you via SMS</h5>
+                                </div>
+                                
+                                <input id="id_phonenumber" type="hidden" value="{{phonenumber}}" class="form-control" name="phonenumber"  >
+
+                                {% if form.phonenumber.errors %}
+                                  <div class="form-group col-12">
+                                    <div style="padding: 3px; " id="login-alert" class="alert alert-danger col-sm-12">
+                                    <p>{{form.phonenumber.errors}}</p>
+                                    </div>
+                                    </div>
+                                    {% endif %}
+
+                                 
+                                  {% if form.activationcode.errors %}
+                                  <div class="form-group col-12">
+                                    <div style="padding: 3px; " id="login-alert" class="alert alert-danger col-sm-12">
+                                    <p>{{form.activationcode.errors}}</p>
+                                    </div>
+                                    </div>
+                                    {% endif %}
+    
+                                
+                                <div class="form-group col-sm-12" >
+                                <div  class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class="fa fa-mobile"></i></span>
+                                    </div>
+                                    <input id="id_activationcode" type="text" value="{{ form.activationcode.value|default_if_none:''}}" class="form-control" name="activationcode" placeholder="Activation CODE" autocomplete="off" required >
+                                </div>
+                                </div>
+                                   
+                                <div class="form-group col-sm-12">
+                                    <div  class="form-group">
+                                        <!-- Button -->
+                                        <button type="submit" id="btn-login" class="btn btn-info btn-block">Activate Account </button>
+                                          
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-sm-12">   
+                                    <div style="border-top: 1px solid #eee; padding-top:2px; font-size:85%; text-align:center;"><a >Resend Code</a></div>
+                                    <div style="border-top: 1px solid #eee; padding-top:2px; font-size:85%; text-align:center;"><a href="{% url 'register' %}">Back to Registration</a></div>                         
+                                                             
+                                                                  
+                                </div> 
+
+    
+    
+                            </form> 
+
+   
+                        
+                        </div>                     
+
+            </div> 
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+ {% endblock %}

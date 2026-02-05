@@ -1,0 +1,21 @@
+{% extends "error_base.html" %}
+{% block title %}Page Error{% endblock %}
+{% block description %}Page Error{% endblock %}
+{% block keywords %} {% endblock %}
+
+{% block content %}
+
+<div class="row" >
+<div class="container" align="center" style="text-align:center; padding:20px;">
+<h1 style="font-size:150px;">404</h1>
+<h2> Oouch!! Lost? ... Your Bad.</h2>
+<p>Page cannot be found</p>
+<br>
+  <a href="{% url 'index' %}" style="color:#fff; padding:10px 30px; border:1px solid #fff; border-radius:40px;; ">Emergency Exit</a>
+
+</div>
+</div>
+
+
+
+{% endblock %}

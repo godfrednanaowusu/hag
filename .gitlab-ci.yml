@@ -1,0 +1,127 @@
+# This file is a template, and might need editing before it works on your project.
+image: python:3.8
+
+services:
+  - mysql:latest
+  - postgres:latest
+
+stages:
+#   - staging
+#   - testing  
+  - production
+
+before_script:
+  - python -V # Print out python version for debugging
+  - pip install -r requirements.txt
+
+#####################
+### Testing stage ###
+#####################
+# testing:   
+#    stage: testing
+#    before_script:
+#     - echo "Before Testing Begins"
+#    script: 
+#     # - python3 manage.py test
+#     - echo "Testing Successful"
+#    after_script:
+#     - echo "After Testing has Began"
+#    when: on_success
+#    only:
+#       - master
+#    except:
+#     - development
+
+    
+#######################
+# ### Staging stage ###
+# #####################
+# staging:   
+#    stage: staging
+#    before_script:
+#     - echo "Before Staging Begins"
+#    script: 
+#     - bash .staging-deploy.sh 
+#    after_script:
+#     - echo "After Staging has Began"
+#    when: on_success
+#    only:
+#       - master
+#    except:
+#     - development
+
+
+#####################
+# Staging stage ##
+#####################
+# staging:   
+#    stage: staging      
+#    before_script:  
+#    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#    - eval $(ssh-agent -s)
+   
+#    ## generate ssh key   
+#    - mkdir -p ~/.ssh  
+#    - chmod 700 ~/.ssh
+#    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa   
+#    - chmod 400 ~/.ssh/id_rsa   
+#    # - ssh-keygen -e -f ~/.ssh/id_rsa > ~/.ssh/id_rsa_com.pub
+#    # - ssh-keygen -i -f ~/.ssh/id_rsa_com.pub > ~/.ssh/id_rsa.pub
+#    - ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+
+#    - git config --global user.email "osanimsystems@gmail.com"
+#    - git config --global user.name "Osanim Systems"
+#    - git config --global url."git@gitlab.com:".insteadOf "https://gitlab.com/"
+   
+#    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'   
+   
+#    script:     
+#       - bash .staging-deploy.sh   
+#    environment:     
+#       name: staging     
+#       url: https://www.humanitarianawardsglobal.com   
+#    when: on_success
+#    only:
+#       - master
+#    except:
+#     - development
+
+
+
+# #####################
+# # Production stage ##
+# #####################
+production:   
+   stage: production      
+   before_script:  
+   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+   - eval $(ssh-agent -s)
+   
+   ## generate ssh key   
+   - mkdir -p ~/.ssh  
+   - chmod 700 ~/.ssh
+   - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa   
+   - chmod 400 ~/.ssh/id_rsa   
+   # - ssh-keygen -e -f ~/.ssh/id_rsa > ~/.ssh/id_rsa_com.pub
+   # - ssh-keygen -i -f ~/.ssh/id_rsa_com.pub > ~/.ssh/id_rsa.pub
+   - ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+
+   - git config --global user.email "osanimsystems@gmail.com"
+   - git config --global user.name "Osanim Systems"
+   - git config --global url."git@gitlab.com:".insteadOf "https://gitlab.com/"
+   
+   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'    
+   
+   script:     
+      - bash .production-deploy.sh   
+   environment:     
+      name: production     
+      url: https://www.humanitarianawardsglobal.com   
+   when: on_success
+   only:
+      - master
+   except:
+    - development
+   
+
+  

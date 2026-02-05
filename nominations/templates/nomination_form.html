@@ -1,0 +1,468 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Nomination Form{% endblock %}
+{% block description %}Nomination Form{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row"
+    style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+</div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function () { });
+</script>
+
+<div class="row" id="">
+    {% if awardscheme %}
+    <div class="container" style="padding:20px; ">
+        <br>
+        <h2 style="font-family: juliussansregular; text-align:center;">Nomination Form</h2>
+        <p style="max-width:900px; margin:0 auto; text-align:center;">Humanitarian Awards Global exists to identify, honour and celebrate a
+            cross-section of the nations most influential Non-Profit Organizations from a wide range of industries, who
+            are committed to the growth and community service</p>
+        <br>
+        <form id="nominationform" action="{% url 'nomination_form' %}" method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            <input type="hidden" name="nominationid" value="{{nomination.id}}" />
+
+            <div class="row" style="max-width:800px; margin:0 auto;">
+                <div class="col-12">
+                    {% if messages %}
+                    {% for message in messages %}
+
+                    {% if message.tags == 'success' %}
+                    <div class="alert alert-success" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% elif message.tags == 'info' %}
+                    <div class="alert alert-info" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% elif message.tags == 'error' %}
+                    <div class="alert alert-danger" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% elif message.tags == 'warning' %}
+                    <div class="alert alert-warning" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>            
+                    
+            <div class='row' style="max-width:800px; margin:0 auto;">
+                <div class="col-12 form-group">
+                    <h4>Nominator</h4>
+                </div>
+
+                <div class="form-group col-12">
+                    <label class="col-form-label small">Nominator Fullname:<span class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominator_fullname" name="nominator_fullname" type="text" placeholder="" value="{{form.nominator_fullname.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-4">
+                    <label class="col-form-label small">Nominator Phonenumber:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominator_phonenumber" name="nominator_phonenumber" type="tel"
+                            placeholder="" value="{{form.nominator_phonenumber.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-8">
+                    <label class="col-form-label small">Nominator EmailAddress:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominator_emailaddress" name="nominator_emailaddress" type="email"
+                            placeholder="" value="{{form.nominator_emailaddress.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <!-- <div class="form-group col-12">
+                    <label class="col-form-label small">Nominator Bio: <small>Tell us about yourself (min. 50 chars)</small></label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="nominator_bio"
+                            name="nominator_bio" minlength="50"
+                            placeholder="Your Bio here (min. 50 chars)" style="color:#a07b42; border-color:#a8854a;" required>{{form.nominator_bio.value|default_if_none:''}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-6">
+                    <label class="col-form-label small">How long have you known the Nominee?:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominator_knownnominee_time" name="nominator_knownnominee_time" type="text"
+                            placeholder="0 month/year" value="{{form.nominator_knownnominee_time.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-6">
+                    <label class="col-form-label small">Relationship with Nominee:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominator_nominee_relationship" name="nominator_nominee_relationship" type="text"
+                            placeholder="" value="{{form.nominator_nominee_relationship.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div> -->
+
+                <div class="col-12 form-group">
+                    <hr>
+                </div>
+
+                <div class="col-12 form-group">
+                    <h4>Nominee</h4>
+                </div>
+
+                <!-- <div class="col-12"
+                    style="padding:10px; text-align: center;">
+                    <a class="btn btn-sm btn-light" onclick="clear_mem_photograph()"><i
+                            class="fa fa-close"></i> Clear</a>
+                    <div style="background:#eee; height:145px; max-width: 140px; width:auto; margin:0 auto; border-radius:4px; padding: 5px; box-shadow: 0 0 5px #a5c0d3; position:relative;"
+                        class="memphotodiv">
+                        <img alt="hag" type="img" src="{% static 'images/user.png' %}"
+                            style="height:100%; width:100%; border-radius:4px; ">
+
+                        <span class="memphotooverlay"
+                            style=" display: none; position:absolute; top:5px; left:5px; right:5px; bottom:5px; background: rgba(0,0,0,0.3) url('{% static 'images/icon_camera.png' %}'); background-size: 40%; background-position: center; background-repeat: no-repeat; z-index:1000; border-radius:4px; padding: 5px; box-shadow: 0 0 5px #a5c0d3;"></span>
+
+                        <input type="hidden" id="clearphoto" name="clearphoto" />
+                        <input type="file" id="nominee_photograph" name="nominee_photograph" class="memphotograph"
+                            onchange="upload_mem_photograph(this)" accept=".png, .jpg, .jpeg"
+                            style="display:none; position:absolute;">
+                    </div>
+                </div>
+
+                <div class="form-group col-12" style="text-align:center;">
+                    <label class="col-form-label small">Category:</label>
+                    <div class="">
+                        <select class="form-control input-sm" id="category" name="category" required style=" text-align: center; max-width: 400px; color: #a07b42; border-color: #a8854a; font-size: 100%; margin:0 auto; ">
+                            <option value="{{category.value|default_if_none:''}}">{{category.value|default_if_none:''}}</option>
+                            {% for category in categories %}
+                            <option value="{{category.name}}">{{category.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div> -->
+
+                <div class="form-group col-12 col-sm-6 col-md-12">
+                    <label class="col-form-label small" style="text-align: center; max-width: 400px; font-size: 100%; margin:0 auto; display:block;">Category:<span class="label_req">*</span></label>
+                    <div class="">
+                        
+                        <select class="form-control input-sm" id="category" name="category" required style=" text-align: center; max-width: 400px; color: #a07b42; border-color: #a8854a; font-size: 100%; margin:0 auto; ">
+                            {% if category %}
+                            <option value="{{category.id|default:''}}" selected>{{category.name|default:''}}</option>
+                            {% else %}
+                            <option value="" disabled selected hidden>Select Category</option>
+                            {% endif %}
+                            {% for categ in categories %}
+                            {% if not categ.id == category.id %}
+                            <option value="{{categ.id|default:''}}">{{categ.name|default:''}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-12 " style="padding:10px; text-align: center;">
+                    <a class="btn btn-sm btn-light" onclick="clear_mem_photograph()"><i class="fa fa-close"></i> Clear</a>
+                    <div style="background:#eee; height:145px; max-width: 140px; width:auto; margin:0 auto; border-radius:4px; padding: 5px; box-shadow: 0 0 5px #a5c0d3; position:relative;" class="nomineeimagediv">
+                        {% if form.nominee_photograph.value %}
+                            <img alt="hag image" type="img" src="{{ form.nominee_photograph.value.url }}" style="height:100%; width:100%; border-radius:4px; ">
+                        {% else %}
+                            <img alt="hag image" type="img" src="{% static 'images/user.png' %}" style="height:100%; width:100%; border-radius:4px; ">
+                        {% endif %}
+                        <span class="nomineeimageoverlay" style=" display: none; position:absolute; top:5px; left:5px; right:5px; bottom:5px; background: rgba(0,0,0,0.3) url('{% static 'images/icon_camera.png' %}'); background-size: 40%; background-position: center; background-repeat: no-repeat; z-index:1000; border-radius:4px; padding: 5px; box-shadow: 0 0 5px #a5c0d3;"></span>
+                        <input type="hidden" id="clearphoto" name="clearphoto" />
+                        <small>Max Image size is 5MB</small>
+                        
+                    </div>
+                </div> 
+                <div class="col-12 form-group" style="margin-top:10px; text-align: center;">
+                    <label class="col-form-label small">Photograph:<span class="label_req">*</span></label>
+                    <div class="">
+                        {% if form.nominee_photograph.value %}
+                            <input type="file" id="nominee_photograph" name="nominee_photograph" value="{{ form.nominee_photograph.value.url }}"class="nomineeimage form-control form-control-sm" onchange="upload_nominee_image(this)" accept=".png, .jpg, .jpeg" style="text-align: center; max-width: 300px; color: #a07b42; border-color: #a8854a; font-size: 100%; margin:0 auto; "  />
+                        {% else %}
+                        <input type="file" id="nominee_photograph" name="nominee_photograph" value=""class="nomineeimage form-control form-control-sm" onchange="upload_nominee_image(this)" accept=".png, .jpg, .jpeg" style="text-align: center; max-width: 300px; color: #a07b42; border-color: #a8854a; font-size: 100%; margin:0 auto; "  />
+                        {% endif %}
+                    </div>
+                </div>               
+
+                <div class="form-group col-12 col-sm-6 col-md-4">
+                    <label class="col-form-label small">First name:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_firstname" name="nominee_firstname" type="text"
+                            placeholder="" value="{{form.nominee_firstname.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-4">
+                    <label class="col-form-label small">Middle name:</label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_middlename" name="nominee_middlename"
+                            type="text" placeholder="" value="{{form.nominee_middlename.value|default_if_none:''}}" style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-4">
+                    <label class="col-form-label small">Last name:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_lastname" name="nominee_lastname" type="text"
+                            placeholder="" value="{{form.nominee_lastname.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-6">
+                    <label class="col-form-label small">Phone number:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_phonenumber" name="nominee_phonenumber" type="tel"
+                            placeholder="" value="{{form.nominee_phonenumber.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-6">
+                    <label class="col-form-label small">Email Address:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_emailaddress" name="nominee_emailaddress" type="email"
+                            placeholder="" value="{{form.nominee_emailaddress.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-6">
+                    <label class="col-form-label small">Gender: <span class="label_req">*</span></label>
+                    <div class="">
+                        <select class="form-control input-sm" value="{{form.nominee_gender.value|default_if_none:''}}"
+                            id="nominee_gender" name="nominee_gender" required style="color:#a07b42; border-color:#a8854a; ">
+                            {% if form.nominee_gender.value %}
+                            <option value="{{form.nominee_gender.value|default_if_none:''}}" selected>{{form.nominee_gender.value|default_if_none:''}}</option>
+                            {% else %}
+                            <option value="" disabled selected hidden>Select a Gender</option>
+                            {% endif %}
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="NGO">NGO</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-6">
+                    <label class="col-form-label small">Age Group: <span class="label_req">*</span></label>
+                    <div class="">
+                        <select class="form-control input-sm" value="{{form.nominee_agegroup.value|default_if_none:''}}"
+                            id="nominee_agegroup" name="nominee_agegroup" required style="color:#a07b42; border-color:#a8854a; ">
+                            {% if form.nominee_agegroup.value %}
+                            <option value="{{form.nominee_agegroup.value|default_if_none:''}}" selected>{{form.nominee_agegroup.value|default_if_none:''}}</option>
+                            {% else %}
+                            <option value="" disabled selected hidden>Select an Age Group</option>
+                            {% endif %}
+
+                            <option value="10-20">10-20</option>
+                            <option value="20-30">20-30</option>
+                            <option value="30-40">30-40</option>
+                            <option value="40-50">40-50</option>
+                            <option value="50-60">50-60</option>
+                            <option value="60-70">60-70</option>
+                            <option value="70-80">70-80</option>
+                            <option value="80-90">80-90</option>
+                            <option value="90-100">90-100</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-12">
+                    <label class="col-form-label small">Bio: <small>Tell us about the Nominee (min. 50 chars)</small></label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="nominee_bio"
+                            name="nominee_bio" minlength="50" required
+                            placeholder="About the Nominee (min. 50 chars)" style="color:#a07b42; border-color:#a8854a; ">{{form.nominee_bio.value|default_if_none:''}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-12">
+                    <label class="col-form-label small">Why does your nominee deserve recognition:</label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="nominee_deserve_info"
+                            name="nominee_deserve_info" minlength="50" required
+                            placeholder="Why Nominee Deserves it (min. 50 chars)" style="color:#a07b42; border-color:#a8854a; ">{{form.nominee_deserve_info.value|default_if_none:''}}</textarea>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group col-12 col-sm-6">
+                    <label class="col-form-label small">How has your nominee’s efforts made a difference:</label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="nominee_effort_info"
+                            name="nominee_effort_info" minlength="50" required
+                            placeholder="Difference made by Nominee (min 50 chars)" style="color:#a07b42; border-color:#a8854a; ">{{form.nominee_effort_info.value|default_if_none:''}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+                    <label class="col-form-label small">Is there an incident or turning point that motivated your nominee:</label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="nominee_turning_point"
+                            name="nominee_turning_point" minlength="50"
+                            placeholder="Turning Point (min. 50 chars)" style="color:#a07b42; border-color:#a8854a; ">{{form.nominee_turning_point.value|default_if_none:''}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+                    <label class="col-form-label small">Is there anything else that makes your nominee exceptional or unique:</label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="nominee_exception"
+                            name="nominee_exception" 
+                            placeholder="" style="color:#a07b42; border-color:#a8854a; ">{{form.nominee_exception.value|default_if_none:''}}</textarea>
+                    </div>
+                </div> -->
+
+                <div class="form-group col-12">
+                    <label class="col-form-label small">Please share any website or online articles or reference about your nominee’s activities:</label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="nominee_reference_links"
+                            name="nominee_reference_links" 
+                            placeholder="" style="color:#a07b42; border-color:#a8854a; ">{{form.nominee_reference_links.value|default_if_none:''}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-4">
+                    <label class="col-form-label small">Town/City:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_towncity" name="nominee_towncity" type="text"
+                            placeholder="" value="{{form.nominee_towncity.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-4">
+                    <label class="col-form-label small">Region:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_region" name="nominee_region" type="text"
+                            placeholder="" value="{{form.nominee_region.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-6 col-md-4">
+                    <label class="col-form-label small">Country:<span
+                            class="label_req">*</span></label>
+                    <div class="">
+                        <input class="form-control input-sm" id="nominee_country" name="nominee_country" type="text"
+                            placeholder="" value="{{form.nominee_country.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <!-- <div class="form-group col-12 col-sm-6 col-md-12">
+                    <div class="row">
+                        <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+                            {% if form.nominee_photograph.value %}
+                            <img src="{{ form.nominee_photograph.value.url }}" style="width:100%; height:auto;" />
+                            {% else %}
+                            <img src="{% static 'images/user.png' %}" style="width:100%; height:auto;" />
+                            {% endif %}
+                        </div>
+                        <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                            <label class="col-form-label small">Nominee/Company Image: <span class="label_req">*</span> (Professional Photo)</label>
+                            <div class="">
+                                <input class="form-control input-sm" id="nominee_photograph" name="nominee_photograph" type="file" accept="image/*" placeholder="" value="{{form.nominee_photograph.value|default_if_none:''}}" required style="color:#a07b42; border-color:#a8854a; " />
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> -->
+
+                <!-- <div class="form-group col-12 col-sm-6 col-md-12">
+                    <label class="col-form-label small">Company Name: </label>
+                    <div class="">
+                        <input class="form-control input-sm" id="company_name" name="company_name" type="tel"
+                            placeholder="" value="{{form.company_name.value|default_if_none:''}}" style="color:#a07b42; border-color:#a8854a; " />
+                    </div>
+                </div>
+
+                <div class="form-group col-12 col-sm-12">
+                    <label class="col-form-label small">Company Bio:</label>
+                    <div class="">
+                        <textarea class="form-control input-sm" id="company_bio"
+                            name="company_bio"
+                            placeholder="" style="color:#a07b42; border-color:#a8854a; ">{{form.company_bio.value|default_if_none:''}}</textarea>
+                    </div>
+                </div> -->                
+                {% if nomination %}
+                <div class="form-group col-12">
+                    <button name="updateapplication"  type="submit" class="btn btn-info btn-lg btn-block">Update Nomination Application</button>
+                </div>
+                {% else %}
+                <div class="form-group col-12">
+                    <button name="submitapplication"  type="submit" class="btn btn-success btn-lg btn-block">Submit Nomination Application</button>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <div class="row" style="max-width:800px; margin:0 auto;">
+                <div class="col-12">
+                    {% if messages %}
+                    {% for message in messages %}
+
+                    {% if message.tags == 'success' %}
+                    <div class="alert alert-success" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% elif message.tags == 'info' %}
+                    <div class="alert alert-info" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% elif message.tags == 'error' %}
+                    <div class="alert alert-danger" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% elif message.tags == 'warning' %}
+                    <div class="alert alert-warning" style="margin-bottom:0px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span> </button>
+                        {{ message }}
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+    {% else %}
+    <div class="container" style="padding:20px;">
+        <br>
+        <h2 style="font-family: juliussansregular; text-align:center;">Nominations Closed</h2>
+        <p style="max-width:900px; margin:0 auto; text-align:center;">There are currently no nominations open, kindly contact the administrators for more Information via <a href="mailto:info@humanitarianawardsglobal.com" target="_blank">info@humanitarianawardsglobal.com</a></p>
+        <br>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

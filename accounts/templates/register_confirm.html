@@ -1,0 +1,146 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Register{% endblock %}
+{% block description %}Create Credentials{% endblock %}
+{% block keywords %} {% endblock %}
+
+{% block content %}
+<div class="pageheader row">
+    <div class="container">
+        <h2 style="padding:10px;"> CONFIRM REGISTRATION </h2>
+    </div>
+</div>
+
+<div class="row" style="background: #f5f9fd;">
+<div class="container" style="max-width: 400px; padding:10px 0; margin-bottom:40px;">
+    <div class="row">
+        <div id="loginbox" style="margin-top:20px;" class="mainbox col-md-12  col-sm-12 ">                    
+            <div class="card " style="background:#fff; border: 1px solid #ccc; border-radius:0px; box-shadow: 0 0 10px #e7e7e7;">
+                    
+                    <div style="padding:0px; border-radius:0px;" class="card-body">
+                    
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+              
+                        <form id="loginform" class="simple-inline" role="form" method="post" action="{% url 'registerconfirm' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="emailaddress" value="{{ email }}"/>
+                                <input type="hidden" name="code" value="{{ code }}"/>
+                                <br>
+                               {% if messages %}
+                                {% for message in messages %}
+                                <!-- <div class="row"> -->
+                                    <div class="col-12">
+                                        {% if message.tags == 'success' %}
+                                            <div class="alert alert-success" style="margin-bottom:5px;">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                {{ message }}
+                                            </div>
+                                        {% elif message.tags == 'info' %}
+                                            <div class="alert alert-info" style="margin-bottom:5px;">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                {{ message }}
+                                            </div>
+                                        {% elif message.tags == 'error' %}
+                                            <div class="alert alert-danger" style="margin-bottom:5px;">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                {{ message }}
+                                            </div>
+                                        {% elif message.tags == 'warning' %}
+                                            <div class="alert alert-warning" style="margin-bottom:5px;">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                {{ message }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <p></p>
+                                <!-- </div> -->
+                                {% endfor %}
+                                {% endif %}
+                                <div class="form-group col-12">
+                                <div  class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class="fa fa-home"></i></span>
+                                    </div>
+                                    <input id="id_username" type="text" class="form-control" name="username" value="{{ form.username.value|default_if_none:''}}" placeholder="Username" required >                                      
+                                </div>
+                                </div>
+
+                                                                 
+                                {% if form.password.errors %}
+                                <div class="form-group col-12">
+                                <div style="padding: 3px; " id="login-alert" class="alert alert-danger col-sm-12">
+                                <p>{{form.password.errors}}</p>
+                                </div>
+                                </div>
+                                {% endif %}
+    
+                                <div class="form-group col-sm-12" >
+                                <div  class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class="fa fa-lock"></i></span>
+                                    </div>
+                                    <input id="password" type="password" value="{{ form.password.value|default_if_none:''}}" class="form-control" name="password" placeholder="Password" autocomplete="off" required >
+                                </div>
+                                </div>
+
+                                {% if form.confirmpassword.errors %}
+                                <div class="form-group col-12">
+                                <div style="padding: 3px; " id="login-alert" class="alert alert-danger col-sm-12">
+                                <p>{{form.confirmpassword.errors}}</p>
+                                </div>
+                                </div>
+                                {% endif %}
+
+                                <div class="form-group col-sm-12" >
+                                <div  class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class="fa fa-lock"></i></span>
+                                    </div>
+                                    <input id="confirmpassword" type="password" value="{{ form.confirmpassword.value|default_if_none:''}}" class="form-control" name="confirmpassword" placeholder="Confirm Password" autocomplete="off" required >
+                                </div>
+                                </div>
+
+                                                                
+                                <div class="form-group col-sm-12">
+                                    <div  class="form-group">
+                                        <!-- Button -->
+                                        <button type="submit" id="btn-login" class="btn btn-success btn-block">Create Account  </button>
+                                    </div>
+                                </div>
+    
+    
+                            <div class="form-group col-sm-12">   
+                                <div style="border-top: 1px solid #eee; padding-top:2px; font-size:85%; text-align:center;"><a href="{% url 'login' %}">Already have an Account? Login</a></div>                         
+                                
+                            </div> 
+    
+    
+    
+                            </form> 
+
+   
+                        
+                        </div>                     
+
+            </div> 
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+ {% endblock %}

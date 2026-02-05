@@ -1,0 +1,48 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Nomination Rules{% endblock %}
+{% block description %}Nomination Rules{% endblock %}
+{% block keywords %} {% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px;">
+            <br>
+            <h2 class="text-center" style="font-family: juliussansregular">Rules and Requirements</h2>
+            <p class="text-start" style="max-width:900px;"><i>Please read these carefully.</i><br>
+                No individual may be nominated for more than two award on substantially the same basis. Humanitarian Awards Global will discard entries for multiple awards which broadly replicate other entries.
+                We reserve the right to move an entry to a different category from the category entered if the entry is better suited to that category.</p>
+            <p class="text-start" style="max-width:900px;">
+            <ol>
+                <li>In the event that there are too few qualified nominations in a particular category, Humanitarian Awards Global reserves the right not to select a winner in that category.</li>
+                <li>All nominations must be submitted using the Online Nominating Process. Nominations and supporting materials must be received in submitting or send for be official email. </li>
+                <li>Nominations may be submitted either directly from the individual, company, or from a third party. In the event that a third party nominates an individual, Humanitarian Awards Global  will contact the nominated individual and ask the nominee to review the nomination for accuracy and, if necessary, provide any missing documentation. If the individual fails to provide the required response by the specified date, the nomination will be excluded from competition.</li>
+                <li>All Entries should be accompanied by a high-resolution colour photograph of the individual nominated. These files can be emailed to info@humanitarianawardsglobal.com </li>
+                <li>Supporting material may be required. Should you choose to send additional materials, please ensure they are supportive of the actual nomination. Supporting materials may include brochures, advertisements, photographs and other documents. Please send all supporting materials via email to info@humanitarianawardsglobal.com </li>
+                <li>Winners will NOT be notified prior to the Humanitarian Awards Global event.</li>
+                <li>Each winner is expected to accept their award on stage at the awards ceremony.</li>
+                <li>All information submitted through the Online Nominating Process and all supporting materials will be considered confidential and will only be used by Humanitarian Awards Global and its panel of judges for the purposes of selecting finalists and winners for the Humanitarian Awards Global. </li>
+                <li>It should be assumed and noted that all events will be filmed for distribution purposes. By attending any of our events, you acknowledge awareness of this statement and release of our Communications, its owner, operators, officers, and duly designated representatives operating in either an official or unofficial capacity free from any liability regarding your image, including use and distribution.</li>
+                <li> Employees and family members of the Sponsor, its agents and representatives, its business partners, affiliates, subsidiaries and dealers are not eligible for nomination.</li>
+                <li> Nominees cannot win more than two category except that he is awarded the Best of the Best</li>
+                <li> Nominees and their supporters must not lobby the Events Director, Technical Team or Awarding panel or any. </li>
+                <li> Entries that are incomplete, lost, stolen, late, delayed, misdirected, illegible, damaged, altered, irregular, destroyed, have been submitted through wrong means, or do not conform to or satisfy conditions of these Official Regulations may be disqualified.</li>
+                <li> By entering a nomination or confirming the nomination, entrants accept and agree to abide by the Official Regulations and the decisions of the Awarding Board and Sponsor with respect to all aspects of the contest, which are final, binding and conclusive on all matters relative to this Contest. In the event it is determined that an entrant has entered in a fashion not sanctioned by these Official Regulations, the entrant will be disqualified and all of the entries submitted by the entrant will be disqualified. Entries are subject to verification through the judging process.</li>
+                <li> All entries become the permanent property of the Humanitarian Awards Global organizers. Entrants may be contacted occasionally by the organizers via email, unless the entrant notifies the organizers otherwise, for the purpose of informing the entrant of promotional opportunities and follow ups on nominees entries</li>
+                <li> At any point in the Contest, an entrant may be disqualified at the discretion of the technical Team if the entrant is unable to meet the requirements in a timely manner. This may include being unavailable for interviews or fact checking. Entrants may also be disqualified or Award will be retrieved if it is determined that the nomination form misrepresents the entrant’s achievements in any way</li>
+            </ol>
+            </p>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

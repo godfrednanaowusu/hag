@@ -1,0 +1,8 @@
+django
+pillow
+django-tinymce
+django-environ
+pytz
+tzdata
+dj-database-url
+psycopg2-binary

@@ -1,0 +1,42 @@
+# Created by https://www.gitignore.io/api/django
+
+### General Code Base ###
+*.dist/
+*.vscode/
+
+### Django ###
+.env
+*.egg-info
+*.log
+*.pot
+*.pyc
+*.pyo
+__pycache__/
+local_settings.py
+settings_secret.py
+hag.db
+db.sqlite3
+
+### Migrations ###
+# **/migrations/*
+# migrations/*
+
+### Virtual Env ###
+hagenv/
+
+### Sphinx documentation ###
+docs/
+docs/_build/
+docs/build/
+
+media/
+privatefiles/*
+
+
+
+# If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
+# in your Git repository. Update and uncomment the following line accordingly.
+# <django-project-name>/staticfiles/
+
+
+# End of https://www.gitignore.io/api/django

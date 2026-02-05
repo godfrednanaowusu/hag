@@ -1,0 +1,49 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Unconfirmed Account{% endblock %}
+{% block description %}Growforme{% endblock %}
+{% block keywords %}Growforme{% endblock %}
+
+
+{% block content %}
+<div class="pageheader row" style="background: rgba(3, 169, 244, 0.77); background: linear-gradient(40deg, rgba(3, 169, 244, 0.77), rgba(76, 175, 80, 0.93)), url('{% static 'images/slider4.jpg' %}'); background-size: cover; background-position: center center; color:#fff; padding:100px 5px 50px; ">
+    <div class="container" style="display:block; text-align:left;">
+        <h6 style="margin:3px auto; font-family: robotolight;">
+        <span style="display: inline-block; float:left">{% trans 'Unconfirmed Account' %}</span> <span style="display: inline-block; float:right;">{% trans 'Home' %} / {% trans 'Unconfirmed Account' %}</span></h6>
+    </div>    
+</div>
+
+
+<div class="row" style="">
+<div class="container" style="text-align:center; ">
+
+   <br><br>
+   <div id="" class="pageheader row parallax-window" data-parallax="scroll" data-image-src="{% static 'images/homebackground6.jpg' %}" style="padding:120px 5px 50px; ">
+    <div class="container" style="display:block; text-align:left;">
+        <h6 style="margin:3px auto; font-family: robotolight;">
+        <span style="display: inline-block; float:left">{% trans 'Unconfirmed' %}</span> <span style="display: inline-block; float:right;">{% trans 'Home' %} / {% trans 'Registration' %}</span></h6>
+    </div>    
+</div>
+
+    <div>
+        <img src="/static/images/thumbnail.png" style="height:150px; width:150px; border-radius:200px;"/>
+        <h3>Your Account is currently not confirmed.</h3>
+        <p style="">Kindly check the email you used in signing up and then click the Confirm Account Link, you can check your spam box in case its not found in the Inbox</p>
+        <br>
+        <a href="{% url 'main' %} style="display:inline-block !important; margin:5px;" class="roundbut_blue">Go To Home Page</a>
+        <br><br>
+    </div>
+    
+
+    
+   
+    
+</div>
+</div>
+<!-- end of corestrength -->
+
+
+
+
+{% endblock %}

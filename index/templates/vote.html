@@ -1,0 +1,158 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}{{nominee.nominee_firstname|default:''}} {{nominee.nominee_middlename|default:''}} {{nominee.nominee_lastname|default:''}}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row"
+    style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+</div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function () { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px; text-align: left; ">
+            <br>
+            {% if messages %}
+                {% for message in messages %}
+                    <!-- <div class="row"> -->
+                        <div class="col-12">
+                            {% if message.tags == 'success' %}
+                                <div class="alert alert-success" style="margin-bottom:5px;">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% elif message.tags == 'info' %}
+                                <div class="alert alert-info" style="margin-bottom:5px;">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% elif message.tags == 'error' %}
+                                <div class="alert alert-danger" style="margin-bottom:5px;">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% elif message.tags == 'warning' %}
+                                <div class="alert alert-warning" style="margin-bottom:5px;">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <p></p>
+                    <!-- </div> -->
+                {% endfor %}
+            {% endif %}
+
+            <div class="col-12">
+                <div class="row">             
+                    <div class="form-group col-12 col-sm-12 col-md-5 col-lg-4">
+                        <div class="card form-group" style="width:100%; margin:0 auto; display:block;">
+                            <div
+                                style="width:100%; height:280px; background:url({% if nominee.nominee_photograph %}{{nominee.nominee_photograph.url}}{% else %}/static/images/user.png{% endif %}) no-repeat center; background-size:cover; background-position:top center; border-radius:4px 4px 0 0;">
+                            </div>
+                        </div>
+                        {% if voteonhold %}
+                        <div class="row">
+                            <div class="col-12" style="text-align: center">
+                                <br>
+                                <h3><u>VOTING ON HOLD</u></h3>
+                                <p>Due to the ongoing Pandemic faced by the world, we are currently putting voting on hold until this passes.</p>
+                                <p><b>Please Stay Home & Stay Safe</b></p>
+                                <hr>
+                                <p>All communication will be via email and our social media platforms.</p>
+                                <br>
+                                <p><b><i>By: Humanitarian Awards Committee</i></b></p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="row">
+                            <div class="col-6 form-group">
+                                
+                                <label>Amount:</label>
+                                <h3 style="font-weight:bold; font-family:robotoblack">GH&cent;<span id="voteamount">1.00</span></h3>
+                            </div>
+                            <div class="col-6 form-group">
+                                <label>No of Votes:</label>
+                                <div class="btn-group">
+                                    <button id="reducevotebtn" class="btn btn-md btn-secondary" style="font-weight:bold; font-size:15px; ">-</button>
+                                    <input id="votecount" name="votecount" form="votes_onlineform" type="tel" value="1" style="width: 70px; text-align:center; outline:none; " />
+                                    <button id="increasevotebtn" class="btn btn-md btn-secondary" style="font-weight:bold; font-size:15px; ">+</button>
+                                </div>
+                            </div>
+                            <div class="col-12"><hr style="margin:0;"></div>
+                            <div class="col-12 form-group">
+                                <label>Pay via USSD (Ghana):</label>
+                                <div class="input-group" style="">
+                                    <input type="text" value="" name="msisdn" id="msisdn" placeholder="0240000000" class="form-control" />
+                                    <div class="input-group-append">
+                                        <a name="mtn" id="mtn" href="{% url 'votes_online' %}" onclick="this.href+='?code={{code}}&paymenttype=ussd&network=mtn_gh&votecount='+document.getElementById('votecount').value+'&msisdn='+document.getElementById('msisdn').value" class="btn btn-warning btn-md input-group-btn" style="padding:2px;"><img src="/static/images/mtn.png" style="height: 30px;" /></a>
+                                        <a name="vodafone" id="vodafone" href="{% url 'votes_online' %}" onclick="this.href+='?code={{code}}&paymenttype=ussd&network=vodafone_gh&votecount='+document.getElementById('votecount').value+'&msisdn='+document.getElementById('msisdn').value" class="btn btn-danger btn-md input-group-btn" style="padding:2px;"><img src="/static/images/vodafone.png" style="height: 30px;" /></a>
+                                        <a name="tigo" id="tigo" href="{% url 'votes_online' %}" onclick="this.href+='?code={{code}}&paymenttype=ussd&network=tigo_gh&votecount='+document.getElementById('votecount').value+'&msisdn='+document.getElementById('msisdn').value" class="btn btn-primary btn-md input-group-btn" style="padding:2px;"><img src="/static/images/tigo.png" style="height: 30px;" /></a>
+                                        <a name="airtel" id="airtel" href="{% url 'votes_online' %}" onclick="this.href+='?code={{code}}&paymenttype=ussd&network=airtel_gh&votecount='+document.getElementById('votecount').value+'&msisdn='+document.getElementById('msisdn').value" class="btn btn-danger btn-md input-group-btn" style="padding:2px;"><img src="/static/images/airtel.png" style="height: 30px;" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12"><hr></div>
+                            <div class="col-12 form-group">
+                                <label>Pay via Card: (Should be more than 1 vote)</label>
+                                <form id="votes_onlineform" name="votes_onlineform" method="POST" enctype="multipart/form-data" action="{% url 'votes_online' %}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <input type="hidden" name="code" value="{{code}}" />
+                                    <input type="hidden" name="paymenttype" value="card" />
+                                    {% comment %} <input type="hidden" name="votecount" value="'+document.getElementById('votecount').value+'" /> {% endcomment %}
+                                    <div class="col-12 form-group">
+                                        <input type="text" value="" name="payer_fullname" id="payer_fullname" placeholder="Your Full Name" class="form-control" required />
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <input type="text" value="" name="msisdn" id="msisdn" placeholder="Your Phone Number" class="form-control" required />
+                                    </div>
+                                    <div class="btn-group col-12 ">
+                                        <button type="submit" form="votes_onlineform" class="btn btn-primary btn-md"><i class="fa fa-credit-card"></i> Pay with Card</button>
+                                        {% comment %} <a href="{% url 'votes_online' %}" onclick="this.href+='?code={{code}}&paymenttype=card&network=VISA&votecount='+document.getElementById('votecount').value+'&payer_fullname='+document.getElementById('payer_fullname').value+" class="btn btn-primary btn-md"><i class="fa fa-credit-card"></i> Pay with Card</a> {% endcomment %}
+                                        <!-- <a href="{% url 'votes_online' %}" onclick="this.href+='?code={{code}}&paymenttype=card&network=MASTERCARD&votecount='+document.getElementById('votecount').value" class="btn btn-warning btn-md"><i class="fa fa-cc-mastercard"></i> Master Card</a> -->
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                    </div>
+                    <div class="form-group col-12 col-sm-12 col-md-7 col-lg-8">
+                        <h3 style="font-family: juliussansregular;">ABOUT NOMINEE</h3>
+                        <p style="margin-bottom:5px;"><b>Fullname: </b>{{nominee.nominee_firstname|default:''}} {{nominee.nominee_middlename|default:''}} {{nominee.nominee_lastname|default:''}}</p>
+                        <p style="margin-bottom:5px;"><b>Category: </b>{{nominee.category.name|default:''}} </p>
+                        <p style="margin-bottom:5px;"><b>Code: </b>{{nominee.nominee_code|default:''}} </p>
+                        <p style="margin-bottom:5px;"><b>Nominee's Bio: </b>{{nominee.nominee_bio|safe|default:''}} </p>
+                        <br>
+                        <h5>Share via:</h5>
+                        <p><a class='btn btn-success btn-sm' target="_blank" href='whatsapp://send?text=https://www.humanitarianawardsglobal.com/vote/?code={{nominee.nominee_code}}' style="border-radius:30px; padding-left:15px; padding-right:15px; margin:5px 5px 10px 0px;"><i class="fa fa-whatsapp"></i> Whatsapp</a> <a class="btn btn-primary btn-sm" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.humanitarianawardsglobal.com/vote/?code={{nominee.nominee_code}}" style="border-radius:30px;  padding-left:15px; padding-right:15px; margin:5px 5px 10px 0px; "><i class="fa fa-facebook"></i> Facebook</a> <a class="btn btn-info btn-sm" target="_blank" href="https://twitter.com/share?url=https://www.humanitarianawardsglobal.com/vote/?code={{nominee.nominee_code}}" style="border-radius:30px;  padding-left:15px; padding-right:15px; margin:5px 5px 10px 0px;"><i class="fa fa-twitter"></i> Twitter</a></p>
+                        <!-- <p style="margin-bottom:5px;"><b>Why Nominee deserves to be awarded: </b>{{nominee.nominee_deserve_info|default:''}} </p>
+                        <p style="margin-bottom:5px;"><b>Nominee's effort to the society: </b>{{nominee.nominee_effort_info|default:''}} </p>
+                        <p style="margin-bottom:5px;"><b>What makes Nominee Exceptional: </b>{{nominee.nominee_exception|default:''}} </p> -->
+                    
+                    </div>                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

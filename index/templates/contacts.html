@@ -1,0 +1,35 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Contact Us{% endblock %}
+{% block description %}Contact Us{% endblock %}
+{% block keywords %} {% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px; text-align:center;">
+            <br>
+            <h2 style="font-family: juliussansregular">CONTACT US</h2>
+<br>
+            <h4>Get Involved</h4>
+            <br>
+            <p style="max-width:900px; margin:0 auto;">Heroes are found everywhere, could be you, and you may not even know it. Go ahead, send us a message, share your thoughts, think about who the hero impacting lives is or humanitarian works for to be celebrated. Partnerships and sponsorships available for discussion</p>
+            <br>
+            <p style="max-width:900px; margin:0 auto;"><b>Phones:</b> <a href="tel:+233244656402">+233244656402</a>, <a href="tel:+233249174715">+233249174715</a></p>
+            <br>
+            <p style="max-width:900px; margin:0 auto;"><b>Email:</b> <a href="mailto:info@humanitarianawardsglobal.com">info@humanitarianawardsglobal.com</a></p>
+            {% comment %} <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global exists to identify, honour and celebrate a cross-section of the nations most influential Non-Profit Organizations from a wide range of industries, who are committed to the growth and community service</p>
+            <p style="max-width:900px; margin:0 auto;">We believe that in putting the spotlight on these non-profit organisations it will not only celebrate them but also build a strong platform for them by giving a voice and opportunities whiles building a positive attitude in the world. </p> {% endcomment %}
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}Celebrating Change Makers{% endblock %}
+{% block description %}Humanitarian Awards Global exists to identify, honour and celebrate a cross-section of the nations most influential Non-Profit Organizations from a wide range of industries, who are committed to the growth and community service{% endblock %}
+{% block keywords %} Humanitarian Awards Global exists to identify, honour and celebrate a cross-section of the nations most influential Non-Profit Organizations from a wide range of industries, who are committed to the growth and community service {% endblock %}
+
+<!-- End of Mobile Nav -->
+{% block content %}
+<div class="" style="position: absolute;
+right: 0;
+left: 0;
+bottom: 0;
+top: 0; z-index: -1;">
+    <div class="slideshow">
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide1.jpeg')"></div>
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide2.jpeg')"></div>
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide3.jpeg')"></div>
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide4.jpeg')"></div>        
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide5.jpeg'); background-position:tops center"></div>
+        {% comment %} <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide1.jpeg')"></div>
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide1.jpeg')"></div>
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide1.jpeg')"></div>
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide1.jpeg')"></div>
+        <div class="slideshow-image" style="background-image: url('/static/slider/images/2023/slide1.jpeg')"></div> {% endcomment %}
+        
+        {% comment %} <div class="slideshow-image" style="background-image: url('/static/slider/images/slider_2021_10.jpeg')"></div> {% endcomment %}
+    </div>
+    
+</div>
+
+<div id="mainparticlediv" class="row" style="height:100vh; background:linear-gradient(rgb(15 9 1 / 40%), rgb(4 3 0 / 45%)); background-repeat: no-repeat; background-size: cover; background-position: center center; ">
+    <div class="col-12">
+        <div class="container" style="text-align:center; position: relative;">
+            
+            <div class="d-flex flex-1 align-items-end justify-content-center" style="position:absolute; left: 0; right: 0; height:100vh; margin-left: auto; margin-right: auto; text-align: center; font-family: juliussansregular;">
+                {% comment %} <div class="d-none d-md-block" style="height:40vh; width:100%;">
+
+                </div>
+                <div class="d-block d-md-none" style="height:30vh; width:100%;">
+        
+                </div> {% endcomment %}
+                <div class="">
+                    <!-- <img id="mainlogo" src="{% static 'images/toplogo.png' %}" style="height: 60px" /> -->
+                    <h1 id="mainosanimname" style="color:#fff; font-size:230%;">HUMANITARIAN AWARDS</h1>
+                    {% comment %} <h1 id="mainosanimname" style="color:#fff; font-size:230%;">HAG 2024 Nominations Now Open</h1> {% endcomment %}
+                    <h3 style="color:#fff; font-size:90%; letter-spacing: 6px">GLOBAL</h3>
+                    <br>
+                    <div>
+                        <a class="homebuttons" href="{% url 'votenow' %}" style="display: inline-block; margin-bottom:10px;">Vote Now</a>
+                        {% comment %} <a class="homebuttons" href="{% url 'nominations' %}" style="display: inline-block; margin-bottom:10px;">Nominate</a> {% endcomment %}
+                    </div>
+                    <br>
+                </div>
+                
+            </div>        
+        </div>    
+    </div>
+</div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container" style="padding:20px; text-align:center;">
+            <br>
+            <h2 style="font-family: juliussansregular">THE HUMANITARIAN AWARDS GLOBAL</h2>
+            <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global stands to celebrate and recognize NGOs, volunteers leaders, donors, organizations, philanthropist, corporations and professionals in advancing the important work of humanity and making a difference in the lives of people in their localities and across the globe. 
+                <a class="text-decoration-none" href="{% url 'hag_more_info' %}">Read More ...</a>
+                </p>
+                <br>
+                
+            <div class="row">
+                {% for blg in blog %}
+                <div class="col-12 col-sm-6 col-md-3 col-xl-3 mb-4">
+                    <a href="{% url 'blog_detail' identifier=blg.identifier %}" class="text-decoration-none text-reset">
+                        <div class="card">
+                            <img src="{% if blg.artcover %}{{blg.artcover.url}}{% endif %}" alt="article image" class="" style="height:150px; width:100%; object-fit: cover;">
+                            <div class="card-footer">
+                                <p class="m-0">{{blg.title|truncatechars:'50'}}</p>
+                                <p class="small m-0">{{blg.date|date:'dS M Y'}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a href="{% url 'blog' %}" class="btn btn-sm btn-dark">Read More Articles</a>
+                </div>
+            </div>
+            <br><br>
+            <img src="{% static 'images/100_most_impactful_2_2022.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/100_most_impactful_2022.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/2022_nominees.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/2022_nominees_2.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/honorary_awardees_2022.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/most_distinguished_2021.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+
+            <img src="{% static 'images/hag_ev_1.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/hag_ev_2.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/hag_ev_3.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/kofiannan.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/kid.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/villagepeople.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" />
+            <img src="{% static 'images/student.jpeg' %}" style="height:auto; width:95%; max-width:360px; margin:20px 5px; display:inline-block" /> 
+            <div class="row">
+                <div class="col-12 my-4">
+                    <marquee duration="50000" reverse="true">
+                        <img alt="bel_aqua" title="bel_aqua" src="/static/images/bel_aqua.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="bel_beverages" title="bel_beverages" src="/static/images/bel_beverages.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="global_heroes" title="global_heroes" src="/static/images/global_heroes.png" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="akwaaba" title="akwaaba" src="/static/images/akwaaba.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="dds_cocktails" title="dds_cocktails" src="/static/images/dds_cocktails.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="m&c_group" title="m&c_group" src="/static/images/m&c_group.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="st_philip" title="st_philip" src="/static/images/st_philip.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="tarragon" title="tarragon" src="/static/images/tarragon.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="etranzact" title="etranzact" src="/static/images/etranzact.png" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="motion_security" title="motion_security" src="/static/images/motion_security.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="myticketgh" title="myticketgh" src="/static/images/myticketgh.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="labadibeachhotel" title="labadibeachhotel" src="/static/images/labadibeachhotel.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="jesash" title="jesash" src="/static/images/jesash.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                        <img alt="life_healthcare" title="life_healthcare" src="/static/images/life_healthcare.jpeg" className="m-3" style="width:150px; height:100px; margin:5px; object-fit:contain;" />
+                    </marquee>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,164 @@
+<!-- {% load static %} -->
+{% load i18n %}
+
+<!DOCTYPE html>
+<html dir="{% block txt_dir %}ltr{% endblock %}" lang="{{ LANGUAGE_CODE }}">
+
+<head lang="{{ LANGUAGE_CODE }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Growforme</title>
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- Styles -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/panelstyle.css">
+
+    <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+<script src="/static/js/appup.js" type="text/javascript"></script>
+
+<link type="text/css" rel="stylesheet" href="/static/lightgallery/css/lightgallery.css" />
+<script src="/static/lightgallery/js/lightgallery.js"></script>
+                            
+
+</head>
+<body >
+    
+    <div id="main_body" style="display:block;">        
+            
+        <div class="container-fluid">
+            <div class="row" style="padding-top: 10px;">
+                <div class="col-3 d-none d-sm-none d-md-block">
+                    <div class="cardbox">
+                        <div style="width:100%; height:auto; background:#28a745; background:linear-gradient(rgba(139, 195, 74, 0.79), rgba(76, 175, 80, 0.93)), url('{% static 'images/homebackground4.jpg' %}'); background-size:cover; color:#efefef; text-align:center; padding:2px 3px 10px; position: relative; ">
+                                <!-- <h4 style="font-size:90%; padding:5px;">Account Profile</h4> -->
+                                <div style="display: block; height: 45px;">
+                                    <span class="float-left">
+                                        <a href="#panelsetting" style="color:#fff;"> <i class="fa fa-cog fa-lg" title="Settings" style="padding:15px;"></i></a>
+                                    </span>
+                                    <span class="float-right">
+                                        <div class="btn-group" title="{{LANGUAGE_CODE}}" style="margin:10px; position: absolute; right:0; top: 0;">    <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
+                                            <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->                    
+                                            <a class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" href="/changelanguage/{{ LANGUAGE_CODE }}">
+                                            {% if LANGUAGE_CODE == 'en' %}
+                                            <img src="/static/images/english.png" />
+                                            {% elif LANGUAGE_CODE == 'fr' %}
+                                            <img src="/static/images/france.png" />
+                                            
+                                            {% endif %}
+                                            
+                                            </a>
+                                
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/changelanguage/en">
+                                                    <img src="/static/images/english.png" /> English</a>
+                                                </li>
+                                                <li><a href="/changelanguage/fr">
+                                                    <img src="/static/images/france.png" /> French</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </span>
+                                </div>
+                                
+                                <div style="display: block; padding-bottom: 30px;">
+                                    {% if not accountinfo.photograph == '' %}
+                                        <a href="#panelaccount"><img src="/media/{{accountinfo.photograph}}" style="height:120px; width:120px; margin:20px auto 2px; border-radius:100px; padding:5px; box-shadow:0 0 10px #6e6e6e;"/></a>
+                                    {% else %}
+                                        <a href="#panelaccount"><img src="{% static 'images/user.png' %}" style="height:120px; width:120px; margin:20px auto 2px; border-radius:100px; padding:5px; box-shadow:0 0 10px #6e6e6e;"/></a>
+                                    {% endif %}
+                                    <h4 style="font-size:150%; padding:1px;">{{accountinfo.fullname}}</h4>
+                                    <a href="#panelaccount" class="btn btn-sm btn-light" style="border-radius: 20px; padding-left:10px; padding-right:10px;">{% trans 'View Account' %}</a>
+                                    <a href="/logout" class="btn btn-sm btn-danger" style="border-radius: 20px; padding-left:10px; padding-right:10px;">{% trans 'Logout' %}</a>
+                                </div>
+                            </div>
+                        <div style="width:100%; height:calc(100% - 236px); padding-bottom:50px; color:#666464; text-align:left; overflow-y:auto; display:block; padding:10px; ">
+                            <a href="#dashboard" class="btn btn-sm btn-info btn-block" style="border-radius: 3px;">{% trans 'Dashboard' %}</a>
+                            <a href="#panelfarm" class="btn btn-sm btn-success btn-block" style="border-radius: 3px;">{% trans 'New Farm' %}</a>
+                            <br>
+                            <h5 style="height:20px;"><span class="float-left"> {% trans 'Farm Projects' %}  </span> <a href="/clientpanel" class="btn btn-sm btn-primary float-right" ><i class="fa fa-refresh"></i></a></h5>
+                            <br>
+                            <ul id="mainfarmlist" class="row" style="">
+                                {% for farm in farms %}
+                                <li class=""><a href="#{{farm.slug}}" class="col-12 float-left">
+                                    <span class="float-left" style="vertical-align: middle; ">{{farm.farmtitle}} </span>  
+                                    {% if farm.paidstatus == True %}
+                                        <span class="btn-success float-right" style="font-size:70%; padding:1px 8px; border-radius:20px; vertical-align: middle; margin-top: 3px; ">Paid</span>
+                                    {% else %}
+                                        <span class="btn-danger float-right" style="font-size:70%; padding:1px 8px; border-radius:20px; vertical-align: middle; margin-top: 3px; ">Not Paid</span>
+                                    {% endif %}
+                                </a></li>                    
+                                {% endfor %}
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 d-block d-md-none">
+                    <div class="cardbox">
+                        <div id="header">
+                            <div class="float-left">
+                                <i class="fa fa-th fa-lg" style="padding:18px;"></i>
+                            </div>
+                            <div class="float-right">
+                                <img src="/static/images/panellogo.png" style="height:50px; padding:10px; margin:0 auto;"/>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="cardbox">
+                        
+                        <div id="bodycontent">
+
+                            <div id="panelaccount" class="panelbody" style="display:none">
+                                
+
+                            </div>
+
+                            <div id="paneldashboard" class="panelbody" style="display:block">
+                                
+                            </div>
+
+                            <div id="panelsetting" class="panelbody" style="display:none">
+                                
+
+                            </div>
+
+                            <div id="panelfarm" class="panelbody" style="display:none">
+                                
+
+                            </div>
+                            
+                            {% for farm in farms %}
+                            <div id="{{farm.slug}}" class="panelbody container-fluid" style="display:none">
+                                
+
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Column 9 Right -->
+            </div>
+        </div>
+            
+    </div>
+    
+</body>
+
+
+
+<!-- <script src="/static/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+<script src="/static/js/panelscript.js" type="text/javascript"></script>
+</html>

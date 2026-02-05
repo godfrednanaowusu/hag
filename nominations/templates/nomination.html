@@ -1,0 +1,34 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}{{category.name}}{% endblock %}
+{% block description %}{{category.name}}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    {% if awardscheme %}
+    <div class="container" style="padding:20px; text-align:center;">
+        <br>
+        <h2 style="font-family: juliussansregular">{{category.name}}</h2>
+        <p style="max-width:900px; margin:0 auto;">{{category.description_long}}</p>
+        <br>
+        <a class="btn btn-lg homebuttons" href="{% url 'nomination_form' %}?category={{category.id}}" style=""> Nominate</a>
+    </div>
+    {% else %}
+    <div class="container" style="padding:20px;">
+        <br>
+        <h2 style="font-family: juliussansregular; text-align:center;">Nominations Closed</h2>
+        <p style="max-width:900px; margin:0 auto; text-align:center;">There are currently no nominations open, kindly contact the administrators for more Information via <a href="mailto:info@humanitarianawardsglobal.com" target="_blank">info@humanitarianawardsglobal.com</a></p>
+        <br>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

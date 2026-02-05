@@ -1,0 +1,57 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}HAG More Info{% endblock %}
+{% block description %}HAG More Info{% endblock %}
+{% block keywords %} {% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="col-12">
+        <div class="container text-center" style="padding:20px;">
+            <br>
+            <h2 style="font-family: juliussansregular">THE HAG DREAM</h2>
+            <br>
+            <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global is dedicated to honouring and acknowledging NGOs, volunteer leaders, donors,
+                organisations, philanthropists, corporations and professionals who are at the forefront of humanity&#39;s progress,
+                making a profound difference in the lives of individuals both locally and globally.</p>
+                <br>
+            <p style="max-width:900px; margin:0 auto;">Our goal is to celebrate those unsung heroes who, without fanfare, have transformed their communities and
+                continue to have a significant impact on lives and environments.</p>
+                <br>
+            <p style="max-width:900px; margin:0 auto;">We firmly believe that by highlighting these humanitarian endeavours, we do more than just acknowledge
+                them; we also help to establish a robust platform for future industry trailblazers, fostering a positive mindset.
+                We have witnessed extraordinary individuals and companies, who, despite challenges and economic
+                instability, strive tirelessly with dedication and tenacity to improve lives and protect the environment.</p>
+                <br>
+            {% comment %} <p style="max-width:900px; margin:0 auto;">Humanitarian Awards Global stands to celebrate and recognize NGOs, volunteers leaders, donors, organizations, philanthropist, corporations and professionals in advancing the important work of humanity and making a difference in the lives of people in their localities and across the globe.</p>
+                <br>
+                <p style="max-width:900px; margin:0 auto;">
+                    In a bid to recognize and celebrate world heroes who without capes have changed and are still changing the communities and impacting lives and environment. 
+                    </p>
+                    <br>
+                <p style="max-width:900px; margin:0 auto;">We believe that in putting the spotlight on these humanitarian efforts will not only celebrate them but help build a strong platform for them by giving voice and opportunities to the next generation of industry pacesetters while building a positive attitude. We have seen outstanding individuals and companies of trailblazers striving hard with dedication and perseverance by overcoming challenges and economic instability to impact lives and sustain the environment. 
+                    Today it is your time to be celebrated as you deserve the honor.</p> {% endcomment %}
+            <br>
+            <h2 style="font-family: juliussansregular">HUMANITARIAN AWARDS GLOBAL</h2>
+            <p >Humanitarian Awards Global serves to recognize, applaud, and showcase a diverse array of the world&#39;s most
+                impactful non-profit organizations spanning various sectors, all dedicated to community service and societal
+                advancement. Our mission is to shine a light on these non-profits, not only to honour their efforts but also to
+                amplify their voices and enhance their opportunities. In doing so, we aim to foster an environment of positivity
+                and proactive engagement worldwide.</p>
+
+            {% comment %} <p>Humanitarian Awards Global is to recognize and Award extraordinary individuals and groups who are positively impacting the lives of people, nature and society in Ghana.</p>
+            <p>The Awards is to identify, honour and celebrate a cross-section of the nation’s most influential and accomplished businesses doing humanitarian works and leaders from a wide range of industries who are committed to improving lives and preserving the environment through their work and businesses. We believe that in putting the spotlight on these humanitarian efforts, it will not only celebrate them but help build a strong platform for them by giving voice and opportunities to the next generation of industry pacesetters while building a positive attitude. We have seen outstanding individuals and companies of trailblazers striving hard with dedication and perseverance by overcoming challenges and economic instability to impact lives and sustain the environment. These are the people or business we want to award. </p> {% endcomment %}
+        
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

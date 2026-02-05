@@ -1,0 +1,9 @@
+{
+  "short_name":"Church Affairs",
+  "name": "Church Management System",
+  "icons": "/staic/images/logo.png",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1ABC9C",
+  // "orientation": "potrait"
+}

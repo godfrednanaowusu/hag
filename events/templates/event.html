@@ -1,0 +1,24 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}{{event.title}}{% endblock %}
+{% block description %}{{event.title}}{% endblock %}
+{% block keywords %}{% endblock %}
+
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="container" style="padding:20px; text-align:justify;">
+        <br>
+        <h3 style="font-family: juliussansregular">{{event.title}}</h3><br>
+        <img src="{{event.image.url}}" style="width:95%; max-width:350px; height:auto; float:left; margin-right:10px; margin-bottom:10px;" />
+        <p>{{event.content|safe}}</p>        
+    </div>
+</div>
+{% endblock %}

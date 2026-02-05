@@ -1,0 +1,66 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% load static%}
+{% block title %}{{blog.title}}{% endblock %}
+{% block description %}{{blog.title}}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<section id="row" class="py-3">
+    <!-- <div class="col-12">
+        <br><br><br>
+    </div> -->
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <img src="{% if blog.artcover %}{{blog.artcover.url}}{% endif %}" alt="" class="img-fluid w-100">
+
+                    <div class="content mt-3">
+                        <h3 class="sermon-title text-capitalize">{{blog.title|default:''}}</h3>
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="date small m-0">{{blog.date|date:'dS M Y'}} - {{blog.author|default:''}}</p>
+                            </div>
+                            <div class="">
+                                <p class="location small m-0"><i class="lni lni-map-marker me-2"></i>{{blog.location|default:''}}</p>
+                            </div>
+                        </div>
+                        
+                        
+                        <p class="mb-4" style="text-align: justify">{{blog.content|safe}}</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="more_word rounded">
+                        <h4 class="mb-3">More Articles</h4>
+                        <ul class="list-unstyled ">
+                            {% for blg in related_blog %}
+                            <li>
+                                <a href="{% url 'blog_detail' identifier=blg.identifier %}" class="text-decoration-none text-reset">
+                                    <div class="border rounded d-flex mb-2">
+                                        <img src="{% if blg.artcover %}{{blg.artcover.url}}{% endif %}" alt="article image" class="me-3" style="height:50px; width:50px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <p class="m-0 fw-bold">{{blg.title|truncatechars:'50'}}</p>
+                                            <p class="small m-0">{{blg.date|date:'dS M Y'}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

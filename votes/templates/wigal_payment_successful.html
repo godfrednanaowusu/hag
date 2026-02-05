@@ -1,0 +1,30 @@
+{% extends "index_base.html" %}
+{% load static %}
+{% block title %}Thank You{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://www.humanitarianawardsglobal.com{{ request.get_full_path }}">{% endblock %}
+{% block description %}Thank You{% endblock %}
+{% block keywords %} Humanitarian Awards Global {% endblock %}
+
+{% block content %}
+<div id="mainparticlediv" class="row" style="height:180px; background:linear-gradient(rgba(15, 9, 1, 0.97), rgba(4, 3, 0, 0.97)), url({% static 'slider/images/slider4.jpeg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script>
+    particlesJS.load("mainparticlediv", "{% static 'js/particlesjs-config_new.json' %}", function() { });
+</script>
+
+<div class="row" id="about_summary">
+    <div class="container" style="padding:20px; text-align:center;">
+        <br>
+        <h2 style="font-family: juliussansregular">PAYMENT SUCCESSFUL</h2>
+       
+        <p style="max-width:900px; margin:0 auto;">Thank you very much for Voting, please note your payment was successful and your votes will be applied.</p>
+
+        <br>
+        <br>
+        <div>
+            <a class="homebuttons" href="{% url 'votenow' %}" style="display: inline-block; margin-bottom:10px;">Back to Nominee Voting</a>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

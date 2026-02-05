@@ -1,0 +1,20 @@
+{% extends "error_base.html" %}
+{% block title %}Page Error{% endblock %}
+{% block description %}Page Error{% endblock %}
+{% block keywords %} {% endblock %}
+
+{% block content %}
+<div class="row" >
+<div class="container" align="center" style="text-align:center; padding:20px;">
+<h1 style="font-family:focoblack; font-size:150px;">500</h1>
+<h2>Oouch!! We broke something, Very Sorry, Our Bad!!.</h2>
+<p>This is our Fault</p>
+<br>
+  <a href="{% url 'index' %}" style="color:#fff; padding:10px 30px; border:1px solid #fff; border-radius:40px;; ">Parachute out of Here</a>
+
+</div>
+</div>
+
+
+
+{% endblock %}
